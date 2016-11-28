@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="parameters.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="537.48711"
+     inkscape:cy="805.66519"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="1026"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       sodipodi:absref="/home/sfischer/RBA_plante/travail/rba_algorithm/figures/screenshots/parametersXML.png"
+       xlink:href="screenshots/parametersXML.png"
+       width="787"
+       height="822"
+       preserveAspectRatio="none"
+       id="image4328"
+       x="-31.865387"
+       y="-74.835953" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 578.81741,-59.815748 0,136.370594"
+       id="path4331"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="596.11182"
+       y="-18.501019"
+       id="text4333"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4335"
+         x="596.11182"
+         y="-18.501019">Density constraints: up to one</tspan><tspan
+         sodipodi:role="line"
+         x="596.11182"
+         y="0.24898148"
+         id="tspan4337">constraint per compartment</tspan><tspan
+         sodipodi:role="line"
+         x="596.11182"
+         y="18.998981"
+         id="tspan4339">defined in the SBML file.</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 739.43166,144.23507 0,571.74634"
+       id="path4341"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="761.65503"
+       y="183.63103"
+       id="text4343"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4345"
+         x="761.65503"
+         y="183.63103">User defined functions: they describe</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="202.38103"
+         id="tspan4347">how a number of cell parameters </tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="221.13103"
+         id="tspan4349">evolve with growth rate (the variable</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="239.88103"
+         id="tspan4351">of these functions is mu). Any number</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="258.63104"
+         id="tspan4353">of functions can be defined, but a </tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="277.38104"
+         id="tspan4355">restricted number of type of functions</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="296.13104"
+         id="tspan4357">is avalaible (indicator, constant, linear,</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="314.88104"
+         id="tspan4359">exponential, michaelisMenten). For every</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="333.63104"
+         id="tspan4361">type of function a given set of parameters</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="352.38104"
+         id="tspan4363">must be specified.</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="371.13104"
+         id="tspan4365">These functions can then be used to define</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="389.88104"
+         id="tspan4367">other parameters, such as the maximal</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="408.63104"
+         id="tspan4369">density per compartment or target values</tspan><tspan
+         sodipodi:role="line"
+         x="761.65503"
+         y="427.38104"
+         id="tspan4371">for processes.</tspan></text>
+  </g>
+</svg>
