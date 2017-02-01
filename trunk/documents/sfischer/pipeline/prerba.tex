@@ -1,0 +1,41 @@
+
+\section{preRBA: converting biological data}
+
+In order to get the workflow working, the user has to provide an SBML file describing the metabolism of their organism and a Uniprot file describing the proteins of their organism. This section lists the requirements that these files need to meet and how the user's help will be prompted while parsing them.
+
+\subsection{SBML: extraction of metabolism and enzyme information}
+
+\subsubsection{Requirements}
+\req{File should contain \emph{only} metabolic reactions. User should remove the biomass reaction and reactions used to assemble non-metabolites (\textit{e.g.} proteins, rnas, etc.).}
+
+\req{Every reaction should have a note containing a PROTEIN\_ASSOCIATION in standard form. This field should describe the composition of the enzymatic complex catalyzing the reaction in terms of proteins.}
+
+\req{Name of proteins used in the PROTEIN\_ASSOCIATION field should correspond to the names listed in the \texttt{Gene names (ordered locus )} field of the uniprot file.}
+
+\req{All proteins listed in the PROTEIN\_ASSOCIATION field should be referenced in the uniprot file.}
+
+\subsubsection{User interactions}
+Everything is automated, no help needed.
+
+\subsection{Uniprot: extraction of protein information}
+
+\subsubsection{Requirements}
+
+\req{Uniprot file should be standard uniprot in TSV format.}
+
+\subsubsection{User interactions}
+\paragraph{Cofactor stoichiometry} Cofactor stoichiometry (and sometimes names) can be ambiguous. When necessary, user is prompted to read the \texttt{Cofactor} field and provide stoichiometry of cofactors. In order to limit interactions, note that we use the following rules to parse cofactor information:
+\begin{itemize}
+\item If field is empty, we assume there is no cofactor.
+\item If we find exactly one name and its associated CHEBI identifier, and there is only one occurrence of the keyword \texttt{Binds}, we assume stoichiometry is the number the follows \texttt{Binds}.
+\item If we find exactly one name and its associated CHEBI identifier, and there is no stoichiometry information using keyword \texttt{Binds}, we assume stoichiometry is 1.
+\item In any other case, user is asked for help.
+\end{itemize}
+
+\paragraph{Subunit structure} Subunit structure is often ambiguous. When necessary, user is prompted to type how many copies of the proteins are usually found in the enzymatic complex. In order to limit interactions, note that we use the following rules to parse cofactor information:
+\begin{itemize}
+\item If field is empty, we assume there is one subunit in the complex.
+\item If field contains exactly one occurence of the form ``\textit{prefix}mer'', we look at the prefix. If prefix is mono or heterodi, we assume stoichiomery is one. If prefix is homodi, homotri, homotera, homopenta, homohexa, hepta, homoocta, homodeca, homododeca, we assume the number of subunits corresponds to the prefix.
+\item In any other case, user is asked for help.
+\end{itemize}
+
