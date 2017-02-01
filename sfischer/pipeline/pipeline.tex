@@ -1,0 +1,107 @@
+% ============================================
+%  Article Class (This is a LaTeX2e document)  
+% ============================================
+\documentclass[12pt]{scrartcl}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[round]{natbib}
+\usepackage{color}
+
+\newcommand\reft[3][]{#2~\ref{#3}#1}
+\newcommand\refp[3][]{(#2~\ref{#3}#1)}
+\newcommand\refsect[1]{\reft{Section}{#1}}
+\newcommand\refsecp[1]{\refp{Sec.}{#1}}
+\newcommand\reftabt[1]{\reft{Table}{#1}}
+\newcommand\reftabp[1]{\refp{Tab.}{#1}}
+
+% ======
+%  Math
+% ======
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools} % \mathclap
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{property}[thm]{Property}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{assum}[thm]{Assumption}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remarque}
+\numberwithin{equation}{section}
+\newtheorem{req}[thm]{Requirement}
+
+\usepackage{amssymb}
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\Ker}[1]{\mathrm{Ker}\left(#1\right)}
+\newcommand{\Image}[1]{\mathrm{Im}\left(#1\right)}
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\Vect}[1]{\mathrm{Vect}\left\{#1\right\}}
+
+% ============================
+%  Figures and relative paths
+% ============================
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{import}
+\makeatletter
+  \def\relativepath{\import@path}
+\makeatother
+\newcommand\reffigt[2][]{\reft[#1]{Figure}{#2}}
+\newcommand\reffigp[2][]{\refp[#1]{Fig.}{#2}}
+
+% ==========
+%  Document
+% ==========
+\begin{document}
+
+\title{RBA pipeline}%
+\author{S. Fischer - Biosys - MAIAGE}%
+\date{\today}%
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Description of workflow}
+
+\reffigt{fig:workflow} shows the global workflow of the pipeline. It contains three parts:
+\begin{enumerate}
+\item \textbf{preRBA}: Parsing of biological data into RBA compatible XML files. Parts of the process are semi-automated, meaning the user is needed to help solve ambiguous annotations.
+\item \textbf{buildRBA}: XML files are transformed into matrices used by the RBA solver and stored into optimized matlab structures.
+\item \textbf{solveRBA}: matrices are used to compute the optimal resource allocation.
+\end{enumerate}
+As a first step, this workflow should run for any prokaryote.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{workflow}
+  \caption{Workflow of pipeline. The lower part shows how compatibility between the workflow and the former version of RBA were maintained (used for consistency checks).}
+  \label{fig:workflow}
+\end{figure}
+
+The conversion of biological data is the heaviest part. Some of the effort is on the user's side: the files they provide need to follow some specifications. On the other hand, we provide scripts that will automatically transform standard files into standard RBA XML files. The process is semi-automatic: everything works well as long as the annotations are not ambiguous. When an annotation is ambiguous, the user will be asked for help in a (hopefully) user-friendly way. Everything that is input by the user is stored so the user does not have to provide the same information twice.
+
+Once the first step has been taken, the user will have ready-to-use RBA input files. Because user curated information is stored, re-runnig the workflow is way quicker than at first use. The user may modify some information at any time, the workflow will detect it and only run specific subparts and modify files where needed.
+
+\clearpage
+
+\input{prerba}
+
+\appendix
+
+
+%\bibliographystyle{myplainnat}
+%\bibliography{biblio}
+
+\end{document}
+% ----------------------------------------------------------------
