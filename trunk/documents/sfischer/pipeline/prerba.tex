@@ -1,41 +1,86 @@
 
 \section{preRBA: converting biological data}
 
-In order to get the workflow working, the user has to provide an SBML file describing the metabolism of their organism and a Uniprot file describing the proteins of their organism. This section lists the requirements that these files need to meet and how the user's help will be prompted while parsing them.
+In order to get the workflow working, the user has to provide an SBML file describing the metabolism of their organism. A uniprot file is also needed, but it can be retrieved automatically. Several helper files will be generated after the first run of the pipeline. The user needs to adapt these files in order to have a biologically relevant model.
+
+This section lists the requirements for the SBML file and the formats used by the helper files.
 
 \subsection{SBML: extraction of metabolism and enzyme information}
 
 \subsubsection{Requirements}
-\req{File should contain \emph{only} metabolic reactions. User should remove the biomass reaction and reactions used to assemble non-metabolites (\textit{e.g.} proteins, rnas, etc.).}
+\begin{enumerate}
+\item All cytosolic metabolites should end with the suffix \texttt{\_c}.
+\item Every reaction should contain information about associated enzyme composition. There are two accepted formats:
+  \begin{itemize}
+  \item Using the \texttt{<fbc:geneProductAssociation>} tag of the Flux Balance Constraints package for sbml.
+  \item Using the \texttt{<notes>} tag containing a GENE\_ASSOCIATION field. Gene names should be separated using white spaces \texttt{' '} or underscores \texttt{'\_'}. Association of genes should be described by the keywords \texttt{or} and texttt{and}. Parentheses may or may not be used.
+  \end{itemize}
+\end{enumerate}
 
-\req{Every reaction should have a note containing a PROTEIN\_ASSOCIATION in standard form. This field should describe the composition of the enzymatic complex catalyzing the reaction in terms of proteins.}
-
-\req{Name of proteins used in the PROTEIN\_ASSOCIATION field should correspond to the names listed in the \texttt{Gene names (ordered locus )} field of the uniprot file.}
-
-\req{All proteins listed in the PROTEIN\_ASSOCIATION field should be referenced in the uniprot file.}
-
-\subsubsection{User interactions}
-Everything is automated, no help needed.
-
+\subsubsection{Warnings}
+\begin{itemize}
+\item The biomass reaction and reactions used to assemble non-metabolites (\textit{e.g.} proteins, rnas, etc.) are not used in the RBA model. The solver will usually assign them zero fluxes. They may safely be removed from the system.
+\item If a gene listed in the gene association cannot be retrieved in uniprot, it will be replaced by an average protein.
+\item If a gene association is left empty, the pipeline will assume the reaction is spontaneous.
+\end{itemize}
+   
 \subsection{Uniprot: extraction of protein information}
 
 \subsubsection{Requirements}
 
-\req{Uniprot file should be standard uniprot in TSV format.}
-
-\subsubsection{User interactions}
-\paragraph{Cofactor stoichiometry} Cofactor stoichiometry (and sometimes names) can be ambiguous. When necessary, user is prompted to read the \texttt{Cofactor} field and provide stoichiometry of cofactors. In order to limit interactions, note that we use the following rules to parse cofactor information:
+A uniprot file is needed to cross-reference proteins with SBML data. The user needs to provide the Uniprot id of its organism, so a uniprot file can automatically be retrieved. Alternatively, the user can provide a Uniprot file matching following requirements:
 \begin{itemize}
-\item If field is empty, we assume there is no cofactor.
-\item If we find exactly one name and its associated CHEBI identifier, and there is only one occurrence of the keyword \texttt{Binds}, we assume stoichiometry is the number the follows \texttt{Binds}.
-\item If we find exactly one name and its associated CHEBI identifier, and there is no stoichiometry information using keyword \texttt{Binds}, we assume stoichiometry is 1.
-\item In any other case, user is asked for help.
+\item Required fields are: Entry, Gene names, Protein names, Sequence, Cofactor, Subcellular location [CC], Subunit stucture [CC].
 \end{itemize}
 
-\paragraph{Subunit structure} Subunit structure is often ambiguous. When necessary, user is prompted to type how many copies of the proteins are usually found in the enzymatic complex. In order to limit interactions, note that we use the following rules to parse cofactor information:
+\subsection{Helper Files}
+
+Helper files are tab-separated files generated to handle ambiguous data and parameters for the original input files.
+
+\paragraph{location.tsv} We need to match uniprot locations with SBML compartments. Uniprot location can be retrieved automatically. A helper file is generated where the user has to indicate the SBML compartment ids corresponding to the different uniprot locations.
+
+\subsection{Automated parsing rules}
+
+\subsubsection{Enzymatic activity}
+\paragraph{Default enzyme activity} For all enzymes, a constant catalytic activity is applied. In this context, constant means that the catalytic activity does not depend on growth rate.
+
+\paragraph{Transporter detection} An enzyme is considered to be a transporter if the following rules apply:
+\begin{itemize}
+\item One of products has the same prefix as an external metabolite (\textit{e.g.} \texttt{M\_nad\_e} has the same prefix as \texttt{M\_nad\_p}).
+\item One of the reactants is in the cytosol.
+\end{itemize}
+The catalytic activity of a transporter is modified in the following way.
+\begin{itemize}
+\item The main catalytic activity is given by the default catalytic activity applied to all enzymes (see above).
+\item The main catalytic activity is multiplied by a substrate-dependent term ranging from 0 to 1. More precisely, import activity is given by a Michaelis-Mentent function that depends on the concentration of the \emph{external} counterpart of the imported product (\textit{e.g.} if the imported product is \texttt{M\_nad\_p}, the import activity depends on \texttt{M\_nad\_e}).
+\end{itemize}
+
+Note that the latter choice may lead to non-intuitive behaviours. For example, take a bacterium that is able to transform trehalose into glucose in the \emph{periplasm}. Suppose the external concentration of trehalose is set to 0 but the external concentration of glucose is nonzero. The solver might decide to import the (non-existing) trehalose into the periplasm (because import into the periplasm does \emph{not} depend on medium concentrations), transform it into glucose that will automatically be assumed to be at medium concentration and then imported into the cytoplasm.
+
+\subsubsection{Enzyme composition and location}
+Enzyme composition is computed from protein information retrieved in uniprot.
+
+\paragraph{Cofactor stoichiometry} From the uniprot \texttt{Cofactor} field, we use the following rules to parse protein cofactor information:
+\begin{itemize}
+\item If field is empty, we assume there is no cofactor.
+\item If there is exactly one occurrence of the keyword \texttt{Binds}, we assume stoichiometry is the number that follows \texttt{Binds}.
+\item If there is no stoichiometry information using keyword \texttt{Binds}, we assume stoichiometry is 1.
+\item If we find exactly one name and its associated CHEBI identifier, and stoichiometry could be determined as described above, annotation is considered to be not ambiguous.
+\item In any other case, annotation is considered ambiguous and written to helper file for user review. Still we use following heuristics:
+  \begin{itemize}
+  \item If there were several names and associated CHEBI identifier and stoichiometry could be determined, we assume that only the first cofactor listed is relevant. We give it full stoichiometry and 0 stoichiometry to all other cofactors.
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Subunit structure} From the uniprot \texttt{Subunit stucture [CC]} field, we use the following rules to parse the stoichiometry of proteins within their enzymatic complex:
 \begin{itemize}
 \item If field is empty, we assume there is one subunit in the complex.
 \item If field contains exactly one occurence of the form ``\textit{prefix}mer'', we look at the prefix. If prefix is mono or heterodi, we assume stoichiomery is one. If prefix is homodi, homotri, homotera, homopenta, homohexa, hepta, homoocta, homodeca, homododeca, we assume the number of subunits corresponds to the prefix.
-\item In any other case, user is asked for help.
+\item In any other case, field is considered ambiguous and written to helper file for user review. 
 \end{itemize}
 
+\paragraph{Location} From the uniprot \texttt{Subcellular location [CC]} field, we use the following rules to parse location information.
+\begin{itemize}
+\item If field is non-empty, location is usually non ambiguous.
+\item If field is empty, protein is assumed to be in the cytosol.
+\end{itemize}
