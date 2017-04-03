@@ -89,9 +89,20 @@ As a first step, this workflow should run for any prokaryote.
   \label{fig:workflow}
 \end{figure}
 
-The conversion of biological data is the heaviest part. Some of the effort is on the user's side: the files they provide need to follow some specifications. On the other hand, we provide scripts that will automatically transform standard files into standard RBA XML files. The process is semi-automatic: everything works well as long as the annotations are not ambiguous. When an annotation is ambiguous, the user will be asked for help in a (hopefully) user-friendly way. Everything that is input by the user is stored so the user does not have to provide the same information twice.
+\subsection{Philosophy of the pipeline}
 
-Once the first step has been taken, the user will have ready-to-use RBA input files. Because user curated information is stored, re-runnig the workflow is way quicker than at first use. The user may modify some information at any time, the workflow will detect it and only run specific subparts and modify files where needed.
+\paragraph{Everyting should work from first run on} We would like the pipeline to run completely on the first run. This means that a user that inputs an approximately standard SBML file should generate a full RBA model and get first growth rate results without having to do anything. Because annotations are often ambiguous, a lot of default parameters will be used for the first run, but the user will be able to parameterize their model progressively.
+
+\paragraph{Helping user to setup main parameters through csv files} Conversion of biological data is very heavy and often ambiguous. When an annotation is ambiguous, the user will be asked for help through csv files. Everything that is input by the user is stored so the user does not have to provide the same information twice.
+
+\paragraph{Helping user to setup fine parameters through xml files} After the main parameters have been set, the user will have ready-to-use RBA input files. We cannot handle every single parameter through csv files. Because RBA input files are written in xml, an advanced user will still be able to control more subtle parameters in a standardized (but programmatical) way.
+
+\subsection{Typical expected usage}
+\begin{enumerate}
+\item The user provides SBML and runs the pipeline. They are happy because everything runs and he gets some output value. They are unhappy because this output value is unrealistic.
+\item The user spends time going through the helper files and understands why they are here. They provide all the information needed to create a system fully adapted to their organism. They run the whole pipeline to see how growth rate has evolved and generate new and more consistent XML input files.
+\item They spend time fine-tuning processes and enzyme catalytic efficiencies by modifying the XML files, finally reaching a biological sound model.
+\end{enumerate}
 
 \clearpage
 
