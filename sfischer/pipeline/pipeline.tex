@@ -74,11 +74,12 @@
 
 \section{Description of workflow}
 
-\reffigt{fig:workflow} shows the global workflow of the pipeline. It contains three parts:
+\reffigt{fig:workflow} shows the global workflow of the pipeline. It contains four parts:
 \begin{enumerate}
-\item \textbf{preRBA}: Parsing of biological data into RBA compatible XML files. Parts of the process are semi-automated, meaning the user is needed to help solve ambiguous annotations.
-\item \textbf{buildRBA}: XML files are transformed into matrices used by the RBA solver and stored into optimized matlab structures.
-\item \textbf{solveRBA}: matrices are used to compute the optimal resource allocation.
+\item \textbf{PreRba}: Parsing of biological data into RBA compatible XML files. Parts of the process are semi-automated, meaning the user is needed to help solve ambiguous annotations.
+\item \textbf{RbaXml}: Parsing/modifying XML files.
+\item \textbf{RbaMatrices}: XML files are transformed into matrices.
+\item \textbf{RbaSolver}: matrices are used to compute the optimal resource allocation.
 \end{enumerate}
 As a first step, this workflow should run for any prokaryote.
 
