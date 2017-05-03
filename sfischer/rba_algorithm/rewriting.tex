@@ -46,14 +46,15 @@ The most important here is the composition matrix. In the data, the user gives t
 
 \paragraph{Ribosome/chaperone constraints} We can rewrite the ribosome constraint as follows:
 \[
-k_TR + \mu [C^R_E,C^R_R,C^R_C] [E;R;C] = -\mu C^R_GP_G
+k_TR = \mu [PC^R_E,PC^R_R,PC^R_C] [E;R;C] + \mu PC^R_GP_G
 \]
+where $PC^R$ is the Processing Cost of a molecule and $k_T$ the capacity of a ribosome (\textit{e.g.} the capacity of a ribosome is the number of aas it can process and the processing cost is the number of amino acids of a protein).
 In full form:
 \[
-[0,\mu C^R_E,k_T+\mu C^R_R,\mu C^R_C] [\nu;E;R;C] = [-\mu C^R_G,0][P_G;X_c]
+[0,\mu PC^R_E,k_T+\mu PC^R_R,\mu PC^R_C] [\nu;E;R;C] = [-\mu PC^R_G,0][P_G;X_c]
 \]
 
-The number of aas needed to build a protein can be included in the description of molecule sets. The same applies for folding by chaperones. 
+The same applies for folding by chaperones. 
 
 These additionnal constraints have the form
 \[
@@ -72,18 +73,19 @@ where $d = 0$ when the target flux is an abolute flux and $d=1$ when it compensa
 
 \paragraph{Density constraints} The density constraint writes
 \[
-[0,C^D_E,C^D_R,C^D_C] [\nu;E;R;C] \leq \overline{D} - [C^D_G,C^c_G][P_G;X_c]
+[0,W_E,W_R,W_C] [\nu;E;R;C] \leq \overline{D} - [W_G,W_c][P_G;X_c]
 \]
+where $W$ is the weight of each molecule.
 In general, these constraints can be expected to be of the form
 \[
 a [\nu; E; R; C] \leq b_0 + b_1 [P_G;X_c]
 \]
 
-\paragraph{Maintenance ATP constraint (metabolite specific constraints)} It is defined as
+\paragraph{Maintenance ATP constraint (flux constraints)} It is defined as
 \[
 \mathbf{1}_{\nu_{constraint}} [\nu; E; R; C] = b
 \]
-where $\mathbf{1}_{\nu_{constraint}}$ is an indicator matrix selecting the reaction associated with the production of maintenance ATP/flagella fuel. Generally this means a specific reaction has to be added in $S$, as well as specific metabolites like ATP maintenance or protons dedicated to fuelling flagella.
+where $\mathbf{1}_{\nu_{constraint}}$ is an indicator matrix selecting the reaction associated with the production of maintenance ATP/flagella fuel. Generally this means a specific reaction has to be added in $S$. Another way to handle these constraints is to include them in the lower/upper bounds of the optimization problem.
 
 \paragraph{Summary}
 
@@ -93,7 +95,7 @@ where $\mathbf{1}_{\nu_{constraint}}$ is an indicator matrix selecting the react
   - \sum \mu^{d_i}C_i X_i & \textrm{(Base metabolism}\\
   & & & \textrm{and process production)} \\
   a & [\nu; E; R; C] = & b_0 + b_1 [\{X_i\}] & \textrm{(Process capacity)}\\
-  \mathbf{1}_{\nu_{constraint}} & [\nu; E; R; C] = & b & \textrm{(Metabolite constraints)} \\
+  \mathbf{1}_{\nu_{constraint}} & [\nu; E; R; C] = & b & \textrm{(Flux constraints)} \\
   \left[
     \begin{array}{cccc}
       I, & -\diag{k_E}, & 0, & 0 \\

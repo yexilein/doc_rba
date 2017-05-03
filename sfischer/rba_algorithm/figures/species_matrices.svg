@@ -173,8 +173,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="480.13139"
-     inkscape:cy="834.2854"
+     inkscape:cx="402.07593"
+     inkscape:cy="777.08358"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -223,21 +223,6 @@
            id="tspan4140"
            sodipodi:role="line">componentMatrix</tspan></text>
     </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="55.285713"
-       y="233.93362"
-       id="text4142"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4144"
-         x="55.285713"
-         y="233.93362">(rba.macromolecules, generated</tspan><tspan
-         sodipodi:role="line"
-         x="55.285713"
-         y="252.68362"
-         id="tspan4146">in readXMLProtein/Rna/Dna)</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -344,22 +329,7 @@
          sodipodi:role="line"
          x="107.39657"
          y="436.90341"
-         id="tspan4964">(.metabolite.table)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="84"
-       y="726.36218"
-       id="text4190"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan4192"
-         x="84"
-         y="726.36218">(not stored, generated in </tspan><tspan
-         sodipodi:role="line"
-         x="84"
-         y="745.11218"
-         id="tspan4194">readXMLProcess)</tspan></text>
+         id="tspan4964">(metabolites)</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -440,21 +410,6 @@
        width="264.28574"
        id="rect4345"
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.25;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text4351"
-       y="-119.63782"
-       x="84"
-       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="-119.63782"
-         x="84"
-         id="tspan4353"
-         sodipodi:role="line">(not stored, generated in </tspan><tspan
-         id="tspan4355"
-         y="-100.88782"
-         x="84"
-         sodipodi:role="line">readXMLProtein/Rna/Dna)</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4357"
@@ -546,21 +501,6 @@
            x="93.571426"
            y="128.07649">weight</tspan></text>
     </g>
-    <text
-       sodipodi:linespacing="125%"
-       id="text4430"
-       y="79.933617"
-       x="729.28571"
-       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="79.933617"
-         x="729.28571"
-         id="tspan4432"
-         sodipodi:role="line">(rba.macromolecules, generated</tspan><tspan
-         id="tspan4434"
-         y="98.683617"
-         x="729.28571"
-         sodipodi:role="line">in readXMLProtein/Rna/Dna)</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4436"
@@ -846,7 +786,7 @@
          id="tspan4972"
          y="624.90344"
          x="107.39657"
-         sodipodi:role="line">(.processing.table)</tspan></text>
+         sodipodi:role="line">(processing costs)</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4974"
@@ -928,21 +868,6 @@
            x="83.571426"
            y="128.07649">processingCost</tspan></text>
     </g>
-    <text
-       sodipodi:linespacing="125%"
-       id="text5620"
-       y="603.93359"
-       x="729.28571"
-       style="font-style:normal;font-weight:normal;font-size:15px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
-         y="603.93359"
-         x="729.28571"
-         id="tspan5622"
-         sodipodi:role="line">(rba.macromolecules, generated</tspan><tspan
-         id="tspan5624"
-         y="622.68359"
-         x="729.28571"
-         sodipodi:role="line">in readXMLProcess)</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text5626"
