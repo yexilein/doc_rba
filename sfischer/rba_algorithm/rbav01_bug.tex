@@ -1,0 +1,11 @@
+
+\section{Small bug in RBAv01}
+
+There was a slight bug in RBAv01. A typo in indexing while updating transporters
+had the following consequences:
+\begin{itemize}
+\item Two Fe transporter would not be initialized properly. They worked at default capacity. In the presence of Fe, this has only a low impact as they would be active anyway. In the absence of Fe, they would keep working.
+\item Instead, the catalytic efficiency of enzyme EPtsI was modified. In the presence of Fe, it would divide its catalytic activity by 2, leading to slightly lower growth rate than expected (something like 0.015). In the absence of Fe, the forward reaction catalyzed by EPtsI would be blocked.
+\end{itemize}
+
+Briefly, this bug has a small impact in the presence of Fe and a dramatic impact in the absence of Fe. To our knowledge, there is no dataset where Fe was removed from the medium, explaining why this bug has not been discovered earlier.
