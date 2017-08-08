@@ -9,15 +9,20 @@
 
 \subtitle{Subject Section}
 
-\title[short Title]{\texttt{rba} package for Resource Balance Analysis}
-\author[Sample \textit{et~al}.]{
-  Corresponding Author\,$^{\text{\sfb~1,}*}$,
-  Co-Author\,$^{\text{\sfb~2}}$ and
-  Co-Author\,$^{\text{\sfb~2,}*}$
+\title[RBAb pipeline]{RBAb: a pipeline to build genome-scale cellular models}
+\author[Fischer \textit{et~al}.]{
+  Stephan Fischer\,$^{\text{\sfb 1}}$,
+  Ana Bulovic\,$^{\text{\sfb 2}}$,
+  Marc Dinh\,$^{\text{\sfb 1}}$,
+  Vincent Fromion\,$^{\text{\sfb 1}}$
+  and Anne Goelzer\,$^{\text{\sfb 1},*}$
 }
-\address{$^{\text{\sf 1}}$Department, Institution, City, Post Code, Country and \\
-$^{\text{\sf 2}}$Department, Institution, City, Post Code,
-Country.}
+\address{
+  $^{\text{\sf 1}}$ UR1404 MaIAGE, INRA, University of Paris-Saclay,
+    78350 Jouy-en-Josas, France, and
+  $^{\text{\sf 2}}$ Theoretical Biophysics, Humboldt-Universität zu Berlin,
+    Berlin, Germany
+}
 
 \corresp{$^\ast$To whom correspondence should be addressed.}
 
@@ -25,42 +30,55 @@ Country.}
 
 \editor{Associate Editor: XXXXXXX}
 
-\abstract{\textbf{Motivation:} Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text
-Text Text Text Text Text Text
-Text Text Text Text Text.\\
-\textbf{Results:} Text  Text Text Text Text Text Text Text Text Text  Text Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text  Text Text Text Text Text Text\\
-\textbf{Availability:} Text  Text Text Text Text Text Text Text Text Text  Text Text Text Text
-Text Text Text Text Text Text Text Text Text Text Text Text Text Text  Text\\
-\textbf{Contact:} \href{name@bio.com}{name@bio.com}\\
-\textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics}
-online.}
+\abstract{
+\textbf{Motivation:}
+Yes\\
+\textbf{Results:}
+No\\
+\textbf{Availability:}
+The software is freely available and can be downloaded from\\
+\textbf{Contact:} \href{anne.goelzer@inra.fr}{anne.goelzer@inra.fr}\\
+\textbf{Supplementary information:}
+Supplementary data are available at \textit{Bioinformatics} online.
+}
 
 \maketitle
 
 \section{Introduction}
+Parcimonious resource allocation emerged as a strong design principle
+for microorganisms \citep{goelzer_cell_2009,scott_interdependence_2010}.
+Based on this principe, new types of genome-scale cellular
+constraint-based models have been developed
+\citep{goelzer_cell_2011,obrien_genomescale_2013}.
+In particular, we developed the resource balance analysis (RBA) method
+that has been recently validated for the bacterium
+\textit{Bacillus subtilis} \citep{goelzer_quantitative_2015}.
 
-Metabolism is traditionally explored with Flux Balance Analysis (FBA).
-FBA blah blah blah.
+RBA models integrate 3 set of constraints:
+mass balance in the metabolic network such as
+in genome-scale metabolic models \citep{varma_stoichiometric_1994},
+capacity constraints on cellular processes and
+density constraints on the cytosol and membrane occupancy
+(reviewed in \citet{goelzer_resource_2017}).
+RBA models necessitate various sources of information on cellular economics
+(composition of molecular entities, processing costs and composition
+of cellular processes, etc.)
+and quantitative parameters related to cell physiology
+or to the efficiency of molecular machineries \citep{goelzer_resource_2017}.
 
-Resource Balance Analysis (RBA) was introduced by \citet{goelzer}.
-RBA is build around three principles.
-\begin{itemize}
-  \item Stoichiometry constraints (similar to FBA) for mass conservation.
-  \item Machinery costs (enzymes, ribosomes) that associate costs
-  to metabolic pathways and other cell processes.
-  \item Density constraints preventing infinite growth.
-\end{itemize}
-In RBA, cells select pathways based on their
-metabolic costs in order to achieve maximal growth rates.
-A typical illustration of this phenomenon is catabolic repression~\citep{mimi}.
+In this paper, we present a pipeline that builds
+a valid RBA model from an SBML file.
+Information about molecular composition is retrieved in
+a semi-automated process.
+The pipeline generates a model containing basic cell processes.
+The model is written in XML files to enable further enrichments.
 
-\begin{methods}
-\section{Methods}
+\section{Source of information}
+Resource allocation models require various sources of information.
 
-In this paper, we present the \texttt{rba} Python packag.
+\section{Pipeline structure}
+
+We present the \texttt{rba} Python package.
 \texttt{rba} was designed to perform three tasks.
 \begin{itemize}
   \item Build a working RBA model from an SBML file and Uniprot data.
@@ -69,7 +87,6 @@ In this paper, we present the \texttt{rba} Python packag.
   \item Visualize solutions.
 \end{itemize}
 
-\end{methods}
 
 \begin{figure}[!tpb]%figure1
 \centerline{\includegraphics{OUP_First_SBk_Bot_8401.eps}}
@@ -86,7 +103,9 @@ Illustration of prerba and nice output for subtilis/coli.
 
 \section*{Funding}
 
-This work has been supported by the Text Text  Text Text.\vspace*{-12pt}
+This work has been funded by the French Lidex-IMSV of the University Paris-Saclay.\\
+\textit{Conflict of Interest}: none declared.
+\vspace*{-12pt}
 
 \bibliographystyle{natbib}
 %\bibliographystyle{achemnat}
