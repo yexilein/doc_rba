@@ -1,0 +1,49 @@
+
+\section{metabolism.xml}
+
+\subsection{RBAMetabolism container}
+
+The metabolism file is strongly inspired by SBML.\@
+More precisely, it is a subpart of an SBML file.
+
+\subsubsection{RBAMetabolism}
+\label{sec:rba_metabolism}
+
+The outermost portion of the metabolism file is an instance of class
+\rbametabolism, shown in Figure~\ref{fig:metabolism_doc}.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.9]{figures/metabolism_doc}
+  \caption{XML structure of metabolism document.}
+\label{fig:metabolism_doc}
+\end{figure}
+
+Currently, \rbametabolism{} has no simple attributes.
+It includes exactly one instance of \textbf{ListOf} container classes.
+All \textbf{ListOf} classes do not have own attributes,
+they are merely used to organize a list of instances from another class.
+This organization was inspired by SBML.\@
+
+\subsubsection{Compartment}
+\label{sec:compartment}
+
+The \compartment{} class is used to list existing cell compartments.
+
+\paragraph{The \textit{id} attribute}
+The \textbf{id} attribute is a string defining the identifier of a compartment.
+
+\subsubsection{Species}
+\label{sec:species}
+
+The \species{} class is used to list \emph{metabolic} species.
+
+\paragraph{The \textit{id} attribute}
+The \textbf{id} attribute is a string defining the identifier of a metabolite.
+
+\paragraph{The \textit{boundaryCondition} attribute}
+The \textbf{boundaryCondition} attribute is a boolean.
+If the attribute is set to true, the metabolite is considered to be at
+a constant concentration.
+In other words, it is not affected by reactions.
+This is typical for metabolites in the external medium.
