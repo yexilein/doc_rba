@@ -17,9 +17,31 @@
 %  References to classes
 % =======================
 \usepackage[colorlinks=true]{hyperref}
+% metabolism
 \newcommand{\rbametabolism}{\hyperref[sec:rba_metabolism]{\textbf{RBAMetabolism}}}
 \newcommand{\compartment}{\hyperref[sec:compartment]{\textbf{Compartment}}}
 \newcommand{\species}{\hyperref[sec:species]{\textbf{Species}}}
+\newcommand{\reaction}{\hyperref[sec:reaction]{\textbf{Reaction}}}
+\newcommand{\speciesreference}{\hyperref[sec:species_reference]{\textbf{SpeciesReference}}}
+% parameters
+\newcommand{\rbaparameters}{\hyperref[sec:rba_parameters]{\textbf{RBAParameters}}}
+\newcommand{\targetdensity}{\hyperref[sec:target_density]{\textbf{TargetDensity}}}
+\newcommand{\targetvalue}{\hyperref[sec:target_value]{\textbf{TargetValue}}}
+\newcommand{\function}{\hyperref[sec:function]{\textbf{Function}}}
+\newcommand{\parameter}{\hyperref[sec:parameter]{\textbf{Parameter}}}
+\newcommand{\aggregate}{\hyperref[sec:aggregate]{\textbf{Aggregate}}}
+\newcommand{\functionreference}{\hyperref[sec:function_reference]{\textbf{FunctionReference}}}
+%macromolecules
+\newcommand{\rbamacromolecules}{\hyperref[sec:rba_macromolecules]{\textbf{RBAMacromolecules}}}
+\newcommand{\component}{\hyperref[sec:component]{\textbf{Component}}}
+\newcommand{\macromolecule}{\hyperref[sec:macromolecule]{\textbf{Macromolecule}}}
+\newcommand{\componentreference}{\hyperref[sec:component_reference]{\textbf{ComponentReference}}}
+% processes
+\newcommand{\rbaprocesses}{\hyperref[sec:rba_processes]{\textbf{RBAProcesses}}}
+\newcommand{\process}{\hyperref[sec:process]{\textbf{Process}}}
+\newcommand{\componentmap}{\hyperref[sec:component_map]{\textbf{ComponentMap}}}
+
+
 
 % ==========
 %  Document
@@ -71,6 +93,8 @@ in the RBA model.
 
 \input{xml_metabolism}
 \input{xml_parameters}
+\input{xml_macromolecules}
+\input{xml_processes}
 
 
 \end{document}
