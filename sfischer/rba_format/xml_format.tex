@@ -52,6 +52,7 @@
 % enzymes
 \newcommand{\rbaenzymes}{\hyperref[sec:rba_enzymes]{\textbf{RBAenzymes}}}
 \newcommand{\enzyme}{\hyperref[sec:enzyme]{\textbf{Enzyme}}}
+\newcommand{\enzymaticactivity}{\hyperref[sec:enzymatic_activity]{\textbf{EnzymaticActivity}}}
 \newcommand{\enzymeefficiency}{\hyperref[sec:enzyme_efficiency]{\textbf{EnzymeEfficiency}}}
 
 
@@ -76,7 +77,7 @@
 \section{Introduction}
 
 In this document we present the XML structures used to define a RBA model.
-A complete RBA model is composed of the following files:
+A complete RBA model is composed of the following files:
 \begin{itemize}
   \item metabolism.xml
   (definition of compartments, metabolic species and metabolic reactions).
@@ -91,9 +92,9 @@ A complete RBA model is composed of the following files:
   (definition of cell processes necessary to growth and maintenance).
 \end{itemize}
 
-For every file, we present the nodes that composes the XML structure.
+For every file, we present the nodes that compose the XML structure.
 For every node, we show a class diagram that shows the node's attributes
-and the children node that it may/must contain.
+and the children nodes that it may/must contain.
 We provide a brief description about the relevance of the node
 in the RBA model.
 
@@ -102,7 +103,32 @@ in the RBA model.
 
 \subsection{Naming conventions}
 
+In XML, classes follow ThisConvention, instances thisConvention.
+In the Python package, classes follow ThisConvention, instances this\_convention.
+In the Python package, instance listOfThings simply becomes things.
+Throughout this document, XML conventions are used.
+Keep in mind that the convention for instances is different when using the
+Python package.
+
 \subsection{Boolean attributes}
+
+A boolean attribute evaluates to true if it is \texttt{"1"}
+or \texttt{"true"} (case does not matter).
+In all other cases it evaluates to false.
+
+\subsection{Variable for transport functions}
+
+A metabolite identifier is expected to look like \texttt{M\_met\_c},
+where \textbf{M} is a generic prefix (identical for all metabolites),
+\textbf{met} is the name of the metabolite
+and \textbf{c} its compartment.
+The variable for a transport function (see \enzymaticactivity) must be the
+\emph{prefix} of a metabolite, in this case \texttt{M\_met}.
+Every time a transport function based on \textbf{met} is evaluated,
+the external concentration is used
+\emph{no matter where the transport takes place}.
+Typically, glucose import rates from the periplasm to the cytosol
+will be based on the concentration of extracellular glucose.
 
 \input{xml_metabolism}
 \input{xml_parameters}
