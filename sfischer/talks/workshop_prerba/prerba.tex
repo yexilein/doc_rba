@@ -33,8 +33,9 @@
 % ==========
 \begin{document}
 
-\title{\texttt{rba} Python package}
-\date{24/10/2017}
+\title{An automated pipeline for construction and simulation of RBA models}
+\author{S. Fischer, V. Fromion, A. Goelzer}
+\date{13/11/2017}
 \maketitle
 
 \begin{frame}{Resource Allocation Models}
@@ -152,7 +153,7 @@
 \end{frame}
 
 \begin{frame}{Example: \textit{Bacillus subtilis}}
-  Expected results with an \emph{hand-curated} RBA model:
+  Results with a \emph{hand-curated} RBA model:
   \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{subtilis_ref}
@@ -199,14 +200,14 @@
 \begin{frame}{Adding flagella}
   \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{added_flagella_code_1} \\
-    \includegraphics[width=0.9\linewidth]{added_flagella_code_2} \\
-    \includegraphics[width=0.9\linewidth]{added_flagella_solver}
+    \includegraphics[width=\linewidth]{added_flagella_code_1} \\
+    \includegraphics[width=\linewidth]{added_flagella_code_2} \\
+    \includegraphics[width=\linewidth]{added_flagella_solver}
   \end{figure}
 \end{frame}
 
 \begin{frame}{Adding enzyme efficiencies}
-  We dump efficiencies from original model and include simple routine using
+  We dump efficiencies from original model and include a simple routine using
   \texttt{rba.xml} to add values to new model.
   \begin{figure}
     \centering
