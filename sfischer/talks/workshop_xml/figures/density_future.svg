@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="densityfuture.svg">
+   sodipodi:docname="density_future.svg">
   <defs
      id="defs4">
     <marker
@@ -60,10 +60,10 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1280"
-     inkscape:window-height="751"
+     inkscape:window-width="1680"
+     inkscape:window-height="1026"
      inkscape:window-x="0"
-     inkscape:window-y="1"
+     inkscape:window-y="24"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -77,7 +77,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -117,7 +117,7 @@
            height="140"
            x="530"
            y="42.362206" /></flowRegion><flowPara
-         id="flowPara38395"></flowPara></flowRoot>    <flowRoot
+         id="flowPara38395" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot38399"
        style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
@@ -127,7 +127,7 @@
            height="60"
            x="590"
            y="92.362206" /></flowRegion><flowPara
-         id="flowPara38405"></flowPara></flowRoot>    <text
+         id="flowPara38405" /></flowRoot>    <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:12.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-20.812204"
@@ -149,7 +149,7 @@
          sodipodi:role="line"
          x="-20.812204"
          y="69.221909"
-         id="tspan39869">       &lt;compartmentReference compartment=&quot;cytosol&quot; coefficient=&quot;1&quot;&gt;</tspan><tspan
+         id="tspan39869">       &lt;compartmentReference compartment=&quot;cytoplasm&quot; coefficient=&quot;1&quot;&gt;</tspan><tspan
          sodipodi:role="line"
          x="-20.812204"
          y="84.846909"
@@ -165,7 +165,7 @@
          sodipodi:role="line"
          x="-20.812204"
          y="131.72191"
-         id="tspan39877">  &lt;densityConstraint upperBound=&quot;cytosol_density&quot;&gt;</tspan><tspan
+         id="tspan39877">  &lt;densityConstraint upperBound=&quot;cytoplasm_density&quot;&gt;</tspan><tspan
          sodipodi:role="line"
          x="-20.812204"
          y="147.34691"
@@ -173,7 +173,7 @@
          sodipodi:role="line"
          x="-20.812204"
          y="162.97191"
-         id="tspan39879">       &lt;compartmentReference compartment=&quot;cytosol&quot; coefficient=&quot;1&quot;&gt;</tspan><tspan
+         id="tspan39879">       &lt;compartmentReference compartment=&quot;cytoplasm&quot; coefficient=&quot;1&quot;&gt;</tspan><tspan
          sodipodi:role="line"
          x="-20.812204"
          y="178.59691"

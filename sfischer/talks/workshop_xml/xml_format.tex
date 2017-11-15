@@ -52,9 +52,10 @@
 \end{frame}
 
 \begin{frame}{\textit{E. coli} SBML model}
-  Illustration with compartments
-  species
-  reactions to genes mapping
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{ecoli}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Enzyme synthesis reactions}
@@ -91,9 +92,10 @@
     \item parameters.xml: parameters and functions.
     \item proteins.xml, rnas.xml, dna.xml: polymer information.
     \item processes.xml: cellular processes.
+    \item enzymes.xml: enzyme information.
     \item targets.xml: biomass targets.
-    \item density.xml: maximal compartment densities.
-    \item medium.tsv: external medium concentrations.
+    \item density.xml: density constraints.
+    \item medium.tsv: external metabolite concentrations.
   \end{itemize}
 \end{frame}
 
@@ -105,17 +107,22 @@
   Components ids do NOT match SBML ids.
 \end{frame}
 
-\begin{frame}{Processing Maps}
+\begin{frame}{Processing Maps (1)}
   \begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{processing_map}
+    \includegraphics[scale=0.7]{processing_map}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Processing Maps (2)}
+  \begin{figure}
+    \includegraphics[scale=0.7]{processing_map_2}
   \end{figure}
 \end{frame}
 
 \begin{frame}{Process}
   \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{process}
+    \includegraphics[scale=0.7]{process}
   \end{figure}
 \end{frame}
 
@@ -151,12 +158,12 @@
   Current implementation:
   \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{density}
+    \includegraphics[scale=0.7]{density}
   \end{figure}
   More generic (future?) implementation:
   \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{density_future}
+    \includegraphics[scale=0.7]{density_future}
   \end{figure}
 \end{frame}
 
