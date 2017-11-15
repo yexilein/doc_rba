@@ -43,15 +43,30 @@
     \centering
     \includegraphics[width=\linewidth]{intro}
   \end{figure}
-  3 central constraints:
-  \begin{itemize}
-    \item Conservation of mass.
-    \item Catalytic capacities.
-    \item Maximal compartment densities.
-  \end{itemize}
 \end{frame}
 
 \begin{frame}{RBA constraints}
+  Resource Balance Analysis (RBA) implements 3 sets of constraints.
+  \begin{itemize}
+    \item \textbf{Mass conservation}: chemical reactions
+    (metabolic reaction, protein synthesis)
+    and boundary conditions (import/export, creation of biomass).
+
+    $\rightarrow$ basic Flux Balance Analysis constraint.
+
+    \item \textbf{Capacity constraints}: a reaction flux can only be sustained
+    if there are enough enzymes (or ribosomes, chaperones).
+
+    $\rightarrow$ sets a price for every metabolic pathway.
+
+    \item \textbf{Maximal density}: every compartment holds a limited number
+    of molecular species.
+
+    $\rightarrow$ selection of most parsimonious pathways.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{From FBA to RBA models}
   Flux Balance Analysis (FBA) models usually provide
   \begin{itemize}
     \item metabolic species
@@ -70,21 +85,41 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Automatic generation of synthesis reactions}
+\begin{frame}{rba Python package}
   We propose a pipline that extends SBML models with standard information
   to create an RBA model.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{package_structure}
+  \end{figure}
+  We use a static RBA solver to validate models.
+\end{frame}
+
+\begin{frame}{Enzyme synthesis reactions}
+  Processes are used to generate synthesis reactions for proteins, RNAs and DNA.\@
   \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{pipeline_idea}
   \end{figure}
 \end{frame}
 
-\begin{frame}{rba Python package}
-  The rba package uses three subpackages:
-  \begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{package_structure}
-  \end{figure}
+\begin{frame}{Default processes and biomass targets}
+  \textbf{Default processes}
+  \begin{itemize}
+    \item Translation: base for protein synthesis.
+    \item Folding: additional synthesis costs for protein synthesis.
+    \item Transcription: RNA synthesis.
+    \item RNA degradation.
+    \item Replication: DNA synthesis.
+  \end{itemize}
+  \textbf{Default biomass targets}
+  \begin{itemize}
+    \item maintenance ATP.
+    \item production of important metabolites (tRNAs, ATP, etc.).
+    \item production of housekeeping proteins.
+    \item production of messenger RNAs.
+    \item production of DNA.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Files needed to run the pipeline.}
@@ -106,7 +141,7 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{rba.prerba flow}
+\begin{frame}{rba.prerba: first run}
   \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{prerba_summary}
@@ -114,7 +149,7 @@
   The RBA model uses default values where necessary.
 \end{frame}
 
-\begin{frame}{rba.prerba flow}
+\begin{frame}{rba.prerba: following runs}
   \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{prerba_summary_2}
@@ -123,37 +158,21 @@
   helper files.
 \end{frame}
 
-\begin{frame}{Default values and processes}
-  \textbf{Default processes}
-  \begin{itemize}
-    \item Translation: base for protein synthesis.
-    \item Folding: additional synthesis costs for protein synthesis.
-    \item Transcription: RNA synthesis.
-    \item RNA degradation.
-    \item Replication: DNA synthesis.
-  \end{itemize}
-  \textbf{Default biomass targets}
-  \begin{itemize}
-    \item maintenance ATP.
-    \item production of important metabolites (tRNAs, ATP, etc.).
-    \item production of housekeeping proteins.
-    \item production of messenger RNAs.
-    \item production of DNA.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{rba.prerba usage}
+\begin{frame}{rba.prerba usage: stepwise construction of models}
   \begin{itemize}
     \item Generate a first model, solve it.
-    \item Fill in information in helper files, generate a fully functional
-    model.
-    \item Adapt enzyme efficiencies using rba.xml.
-    \item Add new processes using rba.xml.
+    \item Fill in helper files, generate a fully functional model.
+    \item Use rba.xml to:
+    \begin{itemize}
+      \item add new processes.
+      \item adapt enzyme efficiencies.
+      \item adapt biomass targets.
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Example: \textit{Bacillus subtilis}}
-  Results with a \emph{hand-curated} RBA model:
+  Results with a \emph{hand-curated} RBA model (541 species, 602 reactions):
   \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{subtilis_ref}
@@ -215,14 +234,19 @@
   \end{figure}
 \end{frame}
 
-
 \begin{frame}{Conclusion}
   \begin{itemize}
     \item Efficient assistance to generate an RBA model from an SBML model.
     \item Models are built step-wise, allowing users to see what changed.
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{multi_step}
+  \end{figure}
+  \begin{itemize}
     \item XML format that allows user to add routines on top of pipeline.
-    \item Efficient solver
-    (less than 2s for \textit{B. subtilis}, 15s for \textit{E. coli}).
+    \item Fine-tuning through processes (additional chaperones, translocation
+    costs, etc.).
   \end{itemize}
 \end{frame}
 
