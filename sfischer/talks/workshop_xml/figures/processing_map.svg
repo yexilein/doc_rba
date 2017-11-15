@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="processingmap.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="254.3968"
+     inkscape:cy="422.59898"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="14.285714"
+       y="32.362206"
+       id="text3336"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3338"
+         x="14.285714"
+         y="32.362206" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="10.239999"
+       y="47.712437"
+       id="text3340"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="47.712437"
+         id="tspan3344"
+         style="font-size:12.5px">    &lt;processingMap id=&quot;translation&quot;&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="63.337437"
+         style="font-size:12.5px"
+         id="tspan4433">      &lt;constantProcessing&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="78.962433"
+         style="font-size:12.5px"
+         id="tspan4435">        &lt;listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="94.587433"
+         style="font-size:12.5px"
+         id="tspan4437">          &lt;speciesReference species=&quot;M_fmettrna_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="110.21243"
+         style="font-size:12.5px"
+         id="tspan4439">          &lt;speciesReference species=&quot;M_gtp_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="125.83743"
+         style="font-size:12.5px"
+         id="tspan4441">          &lt;speciesReference species=&quot;M_h2o_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="141.46243"
+         style="font-size:12.5px"
+         id="tspan4443">        &lt;/listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="157.08743"
+         style="font-size:12.5px"
+         id="tspan4445">        &lt;listOfProducts&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="172.71243"
+         style="font-size:12.5px"
+         id="tspan4447">          &lt;speciesReference species=&quot;M_trnamet_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="188.33743"
+         style="font-size:12.5px"
+         id="tspan4449">          &lt;speciesReference species=&quot;M_for_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="203.96243"
+         style="font-size:12.5px"
+         id="tspan4451">          &lt;speciesReference species=&quot;M_gdp_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="219.58743"
+         style="font-size:12.5px"
+         id="tspan4453">          &lt;speciesReference species=&quot;M_pi_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="235.21243"
+         style="font-size:12.5px"
+         id="tspan4455">          &lt;speciesReference species=&quot;M_h_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="250.83743"
+         style="font-size:12.5px"
+         id="tspan4457">        &lt;/listOfProducts&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="266.46243"
+         style="font-size:12.5px"
+         id="tspan4459">      &lt;/constantProcessing&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="282.08743"
+         style="font-size:12.5px"
+         id="tspan4461">      &lt;listOfComponentProcessings&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="297.71243"
+         style="font-size:12.5px"
+         id="tspan4463">        &lt;componentProcessing component=&quot;A&quot; machineryCost=&quot;1&quot;&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="313.33743"
+         style="font-size:12.5px"
+         id="tspan4465">          &lt;listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="328.96243"
+         style="font-size:12.5px"
+         id="tspan4467">            &lt;speciesReference species=&quot;M_alatrna_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="344.58743"
+         style="font-size:12.5px"
+         id="tspan4469">            &lt;speciesReference species=&quot;M_gtp_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="360.21243"
+         style="font-size:12.5px"
+         id="tspan4471">            &lt;speciesReference species=&quot;M_h2o_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="375.83743"
+         style="font-size:12.5px"
+         id="tspan4473">          &lt;/listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="391.46243"
+         style="font-size:12.5px"
+         id="tspan4475">          &lt;listOfProducts&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="407.08743"
+         style="font-size:12.5px"
+         id="tspan4477">            &lt;speciesReference species=&quot;M_trnaala_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="422.71243"
+         style="font-size:12.5px"
+         id="tspan4479">            &lt;speciesReference species=&quot;M_gdp_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="438.33743"
+         style="font-size:12.5px"
+         id="tspan4481">            &lt;speciesReference species=&quot;M_pi_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="453.96243"
+         style="font-size:12.5px"
+         id="tspan4483">            &lt;speciesReference species=&quot;M_h_c&quot; stoichiometry=&quot;2&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="469.58743"
+         style="font-size:12.5px"
+         id="tspan4485">          &lt;/listOfProducts&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="485.21243"
+         style="font-size:12.5px"
+         id="tspan4487">        &lt;/componentProcessing&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="500.83743"
+         style="font-size:12.5px"
+         id="tspan36262">        ...</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="516.46246"
+         style="font-size:12.5px"
+         id="tspan4983">        &lt;componentProcessing component=&quot;CHEBI:29108&quot; machineryCost=&quot;0.0&quot;&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="532.08746"
+         style="font-size:12.5px"
+         id="tspan36239">          &lt;listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="547.71246"
+         style="font-size:12.5px"
+         id="tspan36241">            &lt;speciesReference species=&quot;M_ca2_c&quot; stoichiometry=&quot;1&quot;/&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="563.33746"
+         style="font-size:12.5px"
+         id="tspan36247">          &lt;/listOfReactants&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="578.96246"
+         style="font-size:12.5px"
+         id="tspan36256">        &lt;/componentProcessing&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="594.58746"
+         style="font-size:12.5px"
+         id="tspan36258">      &lt;/listOfComponentProcessings&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="610.21246"
+         style="font-size:12.5px"
+         id="tspan36264">    &lt;/processingMap&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="625.83746"
+         style="font-size:12.5px"
+         id="tspan36249" /><tspan
+         sodipodi:role="line"
+         x="10.239999"
+         y="641.46246"
+         id="tspan3402"
+         style="font-size:12.5px" /></text>
+  </g>
+</svg>
