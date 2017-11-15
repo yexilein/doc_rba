@@ -87,83 +87,95 @@
 
 \begin{frame}{RBA cell: overview of files}
   \begin{itemize}
-    \item metabolism.xml: (SBML information).
+    \item metabolism.xml: compartments, metabolites, metabolic reactions.
     \item parameters.xml: parameters and functions.
     \item proteins.xml, rnas.xml, dna.xml: polymer information.
     \item processes.xml: cellular processes.
+    \item targets.xml: biomass targets.
     \item density.xml: maximal compartment densities.
     \item medium.tsv: external medium concentrations.
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Polymers}
-  Illustration with polymers components | Illustration with polymer definition.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{polymers}
+  \end{figure}
   Components ids do NOT match SBML ids.
 \end{frame}
 
 \begin{frame}{Processing Maps}
-  Illustration of a processing map with constants costs, one amino acid,
-  one cofactor, maybe folding to illustrate machinery costs.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{processing_map}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Process}
-  Show how a process has a machinery, a capacity, a list of inputs,
-  a processing map.
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{process}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Combining processes}
-  Example of a protein and how it may be listed as input of:
-  translation in cytosol
-  post-translational modifications
-  folding
-  translocation from cytosol into periplasm
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{combining_processes}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Polymer usage}
   \textbf{Biomass targets}
-  \begin{itemize}
-    \item Concentration targets: dna, messenger rnas, housekeeping proteins.
-    \item Flux targets: secreted proteins.
-  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{targets}
+  \end{figure}
   \textbf{Enzymes}
-  \begin{itemize}
-    \item This is where we need stoichiometry information.
-    \item We also need efficiency information.
-  \end{itemize}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{enzyme}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Functions}
-  In RBAcell, we use predefined function types:
-  example
-
-  We use a variable attribute: variable can be growth rate or an external
-  metabolites (used to define transporter efficiencies).
+  In RBAcell, we use predefined function types and a variable attribute:
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{functions}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Density constraints}
-  We would like to be able to define density constraints such as
-
-  (current implementation)
-
-  (more generic implementation)
+  Current implementation:
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{density}
+  \end{figure}
+  More generic (future?) implementation:
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{density_future}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Format conversion and solving}
-  RBAcell -> Precomputing synthesis reaction -> SBML (growth rate dependent)
-                                             -> SBML (all variables replaced)
-                          |
-                    Linear solver
+  \begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{solving}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Conclusions and perspectives}
   \begin{itemize}
     \item RBAcell is centered on cellular processes: flexible descriptions
-    of polymer 'synthesis'.
+    of polymer synthesis.
     \item Processes are mostly species-independent: we used the same set of processes to
     generate models for \textit{B. subtilis}, \textit{E. coli}, \textit{R. solanacearum}
     (only processing maps needed to be adapted).
-    \item Next step: create a converter towards an SBML format.
-    Main technical points are function conversions and representation of density constraints.
+    \item Next step: create a converter towards an SBML format
+    (enzymes using RAM format?, functions?, density constraints?).
   \end{itemize}
 \end{frame}
 
