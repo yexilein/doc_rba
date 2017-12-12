@@ -21,6 +21,13 @@ in order to be closer to process capacity constraints.
 Implementing the new mapping yields smaller matrices, as we need less
 constraints overall.
 
+\subsection{Generalize density constraints}
+
+Instead of having one density constraint per compartment,
+it would be nice to have constraints for linear combinations of compartments.
+This would enable to define global density constraints, i.e,
+the sum of weights in all compartments has to be lower or equal to some limit.
+
 \subsection{Matrix conditioning and objective function}
 
 Performance is extremely variable because our matrix is not well conditioned.

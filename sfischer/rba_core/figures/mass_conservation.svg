@@ -15,7 +15,7 @@
    id="svg17233"
    version="1.1"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06"
-   sodipodi:docname="massconservation.svg">
+   sodipodi:docname="mass_conservation.svg">
   <defs
      id="defs17235">
     <marker
@@ -389,7 +389,7 @@
          id="tspan3511"
          x="373.125"
          y="212.3622"
-         style="font-size:15px;line-height:1.25">m_1</tspan></text>
+         style="font-size:15px;line-height:1.25">p_1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -400,7 +400,7 @@
          id="tspan3515"
          x="420"
          y="212.3622"
-         style="font-size:15px;line-height:1.25">m_M</tspan></text>
+         style="font-size:15px;line-height:1.25">p_M</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
