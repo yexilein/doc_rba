@@ -1,0 +1,152 @@
+% ============================================
+%  Article Class (This is a LaTeX2e document)
+% ============================================
+\documentclass[12pt]{scrartcl}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+\usepackage[round]{natbib}
+\usepackage{color}
+
+\newcommand\reft[3][]{#2~\ref{#3}#1}
+\newcommand\refp[3][]{(#2~\ref{#3}#1)}
+\newcommand\refsect[1]{\reft{Section}{#1}}
+\newcommand\refsecp[1]{\refp{Sec.}{#1}}
+\newcommand\reftabt[1]{\reft{Table}{#1}}
+\newcommand\reftabp[1]{\refp{Tab.}{#1}}
+
+% ======
+%  Math
+% ======
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools} % \mathclap
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{property}[thm]{Property}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{assum}[thm]{Assumption}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remarque}
+\numberwithin{equation}{section}
+
+\usepackage{amssymb}
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\Ker}[1]{\mathrm{Ker}\left(#1\right)}
+\newcommand{\Image}[1]{\mathrm{Im}\left(#1\right)}
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\Vect}[1]{\mathrm{Vect}\left\{#1\right\}}
+
+% ============================
+%  Figures and relative paths
+% ============================
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{import}
+\makeatletter
+  \def\relativepath{\import@path}
+\makeatother
+\newcommand\reffigt[2][]{\reft[#1]{Figure}{#2}}
+\newcommand\reffigp[2][]{\refp[#1]{Fig.}{#2}}
+
+% ==========
+%  Document
+% ==========
+\begin{document}
+
+\title{rba.core\\ Building constraint matrices from RBA data.}%
+\author{Biosys - MAIAGE}%
+\date{\today}%
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{RBA constraints}
+
+In order to build an RBA system, we need to build three sets of constraints.
+
+\begin{itemize}
+  \item[$C_1$] Mass conservation.
+  \item[$C_2$] Capacity constraints for enzymes and, e.g., ribosomes.
+  \item[$C_3$] Density constraints.
+\end{itemize}
+
+All these constraints are linear (in)equalities.
+We will write them in matrix form, as it is the best way to summarize
+all information needed to build a constraint.
+
+\section{Important concepts}
+
+\paragraph{Production/degradation vector for macromolecules}
+In the following, each macromolecule is described by its \textbf{production vector}.
+It is a column vector containing the metabolites necessary to build it,
+with a \textbf{minus} sign for metabolites consumed and a \textbf{plus} sign for byproducts generated.
+Similarly, we define \textbf{degradation vectors}.
+
+\paragraph{Concentration to flux conversion}
+Suppose you have a metabolite at concentration $C = n/V$.
+At growth-rate $\mu$, we have $dV \simeq \mu V$.
+The variation of concentration due to dilution is
+\[
+  dC = d(n/V) = -n/V^2 dV = -\mu C
+\]
+In other words, in order to keep the concentration constant,
+we need an input metabolite flux of
+\[
+  \nu = \mu C
+\]
+When a variable is expressed as a concentration, it may be necessary to
+convert it to a flux by using this relationship.
+When necessary, we indicate this conversion by inserting a conversion
+matrix between the main matrix and the variable vector.
+
+\paragraph{Variable vector representation}
+Variables are represented as a row vector below matrices.
+This clarifies how colums and variables are associated.
+Note the transpose at the end of the row vector if you are worried about
+mathematical purity.
+
+\section{Matrix variables}
+
+\begin{itemize}
+  \item Fluxes through metabolic reactions, labelled $\nu_1$ to $\nu_R$.
+  \item Enzyme concentrations, labelled $e_1$ to $e_E$.
+  \item Process machinery concentrations, labelled $p_1$ to $p_P$.
+  \item Target values, labelled $t_1$ to $t_T$.
+  Targets may be expressed as fluxes or concentrations.
+  In the following we assume that flux targets are all listed first.
+\end{itemize}
+Targets are reactions that are necessary for the cell to be functional
+(e.g. keeping key metabolites at some given concentration).
+Note that target values may actually be set values,
+while all others are true variables that must be optimized.
+We will see later how set values may be eliminated.
+
+\input{constraint_matrices}
+\clearpage
+
+\input{build_matrices}
+\clearpage
+
+\newpage
+\appendix
+\input{eliminate_targets}
+\clearpage
+
+\input{work_in_progress}
+
+%\bibliographystyle{myplainnat}
+%\bibliography{biblio}
+
+\end{document}
+% ----------------------------------------------------------------

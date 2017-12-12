@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="blocks.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="415.16737"
+     inkscape:cy="754.65419"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="751"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     showguides="false"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="-447.14286,1305.7143"
+       orientation="-0.70710678,0.70710678"
+       id="guide4682"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="358.83929"
+       y="79.505058"
+       id="text4142"><tspan
+         sodipodi:role="line"
+         id="tspan4144"
+         x="358.83929"
+         y="79.505058"
+         style="font-size:15px;line-height:1.25"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="339.55356"
+       y="73.790771"
+       id="text4146"><tspan
+         sodipodi:role="line"
+         id="tspan4148"
+         x="339.55356"
+         y="73.790771"
+         style="font-size:7.5px;line-height:1.25"> </tspan></text>
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path3760"
+       d="m 679.4688,141.21935 h 8.92857 v 291.07143 h -8.92857"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       id="text3768"
+       y="226.57561"
+       x="509.2887"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="226.57561"
+         x="509.2887"
+         id="tspan3770"
+         sodipodi:role="line"
+         style="font-size:14px;line-height:1.25">muMC_TC + MC_TF </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="521.37463"
+       y="178.49173"
+       id="text3135"><tspan
+         sodipodi:role="line"
+         id="tspan3137"
+         x="521.37463"
+         y="178.49173"
+         style="font-size:14px;line-height:1.25">muC_TC + C_TF </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="554.39447"
+       y="410.79321"
+       id="text3227"><tspan
+         sodipodi:role="line"
+         id="tspan3229"
+         x="554.39447"
+         y="410.79321"
+         style="font-size:14px;line-height:1.25">W_TC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="353.06412"
+       y="411.10962"
+       id="text3518"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3520"
+         x="353.06412"
+         y="411.10962">W_P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="367.66568"
+       y="226.69865"
+       id="text3850"><tspan
+         style="font-size:14px;line-height:1.25"
+         id="tspan3854"
+         sodipodi:role="line"
+         x="367.66568"
+         y="226.69865">muMC_P - diag(k_P)</tspan></text>
+    <text
+       id="text3886"
+       y="178.49173"
+       x="367.26578"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:14px;line-height:1.25"
+         y="178.49173"
+         x="367.26578"
+         sodipodi:role="line"
+         id="tspan3888">muC_P</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="367.38882"
+       y="95.111023"
+       id="text3496"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3498"
+         x="367.38882"
+         y="95.111023">Process</tspan><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         x="367.38882"
+         y="112.61102"
+         id="tspan4630">Machineries</tspan><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         x="367.38882"
+         y="130.11102"
+         id="tspan4636">(P)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="382.36053"
+       y="257.59253"
+       id="text3856"><tspan
+         sodipodi:role="line"
+         x="384.58905"
+         y="257.59253"
+         id="tspan3718"
+         style="font-size:14px;line-height:1.25"> </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="223.77261"
+       y="411.10962"
+       id="text3504"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3506"
+         x="223.77261"
+         y="411.10962">W_E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="199.7395"
+       y="290.77954"
+       id="text3594"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3596"
+         x="199.7395"
+         y="290.77954">-diag(k<tspan
+   style="font-size:64.99999762%;baseline-shift:super"
+   id="tspan4750">+</tspan>_E)</tspan></text>
+    <text
+       id="text3653"
+       y="354.77954"
+       x="201.90787"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:14px;line-height:1.25"
+         y="354.77954"
+         x="201.90787"
+         id="tspan3655"
+         sodipodi:role="line">-diag(k<tspan
+   style="font-size:64.99999762%;baseline-shift:super"
+   id="tspan4752">-</tspan>_E)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="238.09048"
+       y="103.86102"
+       id="text3488"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3490"
+         x="238.09048"
+         y="103.86102">Enzymes</tspan><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         x="238.09048"
+         y="121.36102"
+         id="tspan4634">(E)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="209.9025"
+       y="226.57561"
+       id="text3846"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3848"
+         x="209.9025"
+         y="226.57561">muMC_E</tspan></text>
+    <text
+       id="text3882"
+       y="178.49173"
+       x="214.12711"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:14px;line-height:1.25"
+         y="178.49173"
+         x="214.12711"
+         id="tspan3884"
+         sodipodi:role="line">muC_E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="121.13539"
+       y="292.77954"
+       id="text3594-6"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3596-8"
+         x="121.13539"
+         y="292.77954">R_to_E</tspan></text>
+    <text
+       id="text3661"
+       y="356.77954"
+       x="115.20131"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:14px;line-height:1.25"
+         y="356.77954"
+         x="115.20131"
+         id="tspan3663"
+         sodipodi:role="line">-R_to_E</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       x="141.86096"
+       y="95.326347"
+       id="text3500"><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         id="tspan3502"
+         x="141.86096"
+         y="95.326347">Reaction</tspan><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         x="141.86096"
+         y="112.82635"
+         id="tspan4638">Fluxes</tspan><tspan
+         style="font-size:14px;line-height:1.25"
+         sodipodi:role="line"
+         x="141.86096"
+         y="130.32635"
+         id="tspan4640">(nu)</tspan></text>
+    <text
+       id="text3661-1"
+       y="180.04349"
+       x="137.43469"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         style="font-size:14px;line-height:1.25"
+         y="180.04349"
+         x="137.43469"
+         id="tspan3663-2"
+         sodipodi:role="line">S</tspan></text>
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path3744"
+       d="m 106.73742,141.21935 h -8.92857 v 291.07143 h 8.92857"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="29.839218"
+       y="170.93362"
+       id="text4642"><tspan
+         sodipodi:role="line"
+         id="tspan4644"
+         x="32.44664"
+         y="170.93362"
+         style="font-size:15px;line-height:1.25">Mass </tspan><tspan
+         sodipodi:role="line"
+         x="29.839218"
+         y="189.68362"
+         id="tspan4646"
+         style="font-size:15px;line-height:1.25">conservation</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="29.333847"
+       y="217.50505"
+       id="text4648"><tspan
+         sodipodi:role="line"
+         id="tspan4650"
+         x="29.333847"
+         y="217.50505"
+         style="font-size:15px;line-height:1.25">Process</tspan><tspan
+         sodipodi:role="line"
+         x="29.333847"
+         y="236.25505"
+         id="tspan4652"
+         style="font-size:15px;line-height:1.25">Capacity</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.568222"
+       y="271.38004"
+       id="text4660"><tspan
+         sodipodi:role="line"
+         id="tspan4662"
+         x="37.568222"
+         y="271.38004"
+         style="font-size:15px;line-height:1.25">Enzyme</tspan><tspan
+         sodipodi:role="line"
+         x="37.568222"
+         y="290.13004"
+         id="tspan4664"
+         style="font-size:15px;line-height:1.25">Capacity</tspan><tspan
+         sodipodi:role="line"
+         x="37.568222"
+         y="308.88004"
+         id="tspan4666"
+         style="font-size:15px;line-height:1.25">(forward)</tspan></text>
+    <text
+       id="text4668"
+       y="330.52289"
+       x="37.333847"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="330.52289"
+         x="37.333847"
+         id="tspan4670"
+         sodipodi:role="line"
+         style="font-size:15px;line-height:1.25">Enzyme</tspan><tspan
+         id="tspan4672"
+         y="349.27289"
+         x="37.333847"
+         sodipodi:role="line"
+         style="font-size:15px;line-height:1.25">Capacity</tspan><tspan
+         id="tspan4674"
+         y="368.02289"
+         x="37.333847"
+         sodipodi:role="line"
+         style="font-size:15px;line-height:1.25">(backward)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.553574"
+       y="395.66577"
+       id="text4676"><tspan
+         sodipodi:role="line"
+         id="tspan4678"
+         x="37.553574"
+         y="395.66577"
+         style="font-size:15px;line-height:1.25">Density</tspan><tspan
+         sodipodi:role="line"
+         x="37.553574"
+         y="414.41577"
+         id="tspan4680"
+         style="font-size:15px;line-height:1.25">Constraints</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="578.07141"
+       y="98.076492"
+       id="text4684"><tspan
+         sodipodi:role="line"
+         x="578.07141"
+         y="98.076492"
+         id="tspan4696"
+         style="font-size:15px;line-height:1.25">Target Concentrations (TC)</tspan><tspan
+         sodipodi:role="line"
+         x="578.07141"
+         y="116.82649"
+         id="tspan4706"
+         style="font-size:15px;line-height:1.25">Target Fluxes (TF)</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 288.91978,139.3622 v 293.375"
+       id="path4756"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4758"
+       d="m 187.8764,139.3622 v 293.375"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -23.6236,197.3622 h 784.625"
+       id="path4801"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4803"
+       d="m -23.6236,247.3622 h 784.625"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       d="m -23.6236,317.2372 h 784.625"
+       id="path4805"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       inkscape:connector-curvature="0"
+       id="path4807"
+       d="m -23.6236,373.2372 h 784.625"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="132.25"
+       y="475.23718"
+       id="text4859"><tspan
+         sodipodi:role="line"
+         id="tspan4861"
+         x="132.25"
+         y="475.23718"
+         style="font-size:15px;line-height:1.25">Blocks needed:</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="218.26904"
+       y="474.23718"
+       id="text4863"><tspan
+         sodipodi:role="line"
+         id="tspan4865"
+         x="218.26904"
+         y="474.23718"
+         style="font-size:15px;line-height:1.25">S: stoichiometry matrix.</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="492.98718"
+         id="tspan4867"
+         style="font-size:15px;line-height:1.25">C_.: composition (production or degradation) matrix</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="511.73718"
+         style="font-size:15px;line-height:1.25"
+         id="tspan167">MC_.: machinery costs</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="530.48718"
+         style="font-size:15px;line-height:1.25"
+         id="tspan169">W_.: weight matrix</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="549.23718"
+         style="font-size:15px;line-height:1.25"
+         id="tspan171">k_.: capacity vector</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="567.98718"
+         style="font-size:15px;line-height:1.25"
+         id="tspan165">D: density limits for every compartment</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="586.73718"
+         style="font-size:15px;line-height:1.25"
+         id="tspan191">R_to_E: reaction to enzyme mapping.</tspan><tspan
+         sodipodi:role="line"
+         x="218.26904"
+         y="595.33289"
+         id="tspan4889"
+         style="font-size:15px;line-height:1.25" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="640"
+       y="568.36218"
+       id="text4877"><tspan
+         sodipodi:role="line"
+         id="tspan4879"
+         x="642.3877"
+         y="568.36218"
+         style="font-size:15px;line-height:1.25"> </tspan><tspan
+         sodipodi:role="line"
+         x="642.3877"
+         y="587.11218"
+         id="tspan4881"
+         style="font-size:15px;line-height:1.25"> </tspan></text>
+    <path
+       inkscape:connector-curvature="0"
+       id="path124"
+       d="m 457.66978,139.3622 v 293.375"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-dashoffset:0;stroke-opacity:1"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 754.4688,141.21935 h 8.92857 v 291.07143 h -8.92857"
+       id="path193"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path195"
+       d="m 722.64737,141.21935 h -8.92857 v 291.07143 h 8.92857"
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.0625px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="733.125"
+       y="412.3746"
+       id="text199"><tspan
+         sodipodi:role="line"
+         id="tspan197"
+         x="733.125"
+         y="412.3746"
+         style="stroke-width:0.9375px">D</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:14.0625px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.9375px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="721.875"
+       y="108.49084"
+       id="text203"><tspan
+         sodipodi:role="line"
+         id="tspan201"
+         x="721.875"
+         y="108.49084"
+         style="font-weight:bold;stroke-width:0.9375px">RHS</tspan></text>
+  </g>
+</svg>

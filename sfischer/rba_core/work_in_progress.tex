@@ -1,0 +1,32 @@
+
+\section{Work in progress}
+
+\subsection{Harmonize enzymes and process machineries}
+
+Currently every reaction must be catalyzed by a different enzyme.
+In comparison, process machineries, such as ribosomes, may catalyze multiple
+production reactions.
+We may use a similar system for enzymes where one enzyme may catalyze several
+reactions.
+
+In this case, the reaction to enzyme mapping becomes a little more complicated
+and must take into account
+\begin{itemize}
+  \item Different k\_cat values for different reactions.
+  \item Distinguish forward and backward reactions.
+\end{itemize}
+A side document explains how enzyme capacity constraints may be rewritten
+in order to be closer to process capacity constraints.
+
+Implementing the new mapping yields smaller matrices, as we need less
+constraints overall.
+
+\subsection{Matrix conditioning and objective function}
+
+Performance is extremely variable because our matrix is not well conditioned.
+Sometimes, adding zero rows and columns drastically improves convergence
+(not sure why, cplex eliminates these rows and columns during presolving, but
+somehow converges in fewer iterations, maybe a bigger matrix increases
+convergence tolerance?).
+Finding a good matrix scaling and objective function may affect performance
+significantly.
