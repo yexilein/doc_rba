@@ -76,9 +76,9 @@
 In order to build an RBA system, we need to build three sets of constraints.
 
 \begin{itemize}
-  \item[$C_1$] Mass conservation.
-  \item[$C_2$] Capacity constraints for enzymes and, e.g., ribosomes.
-  \item[$C_3$] Density constraints.
+  \item[($C_1$)] Mass conservation.
+  \item[($C_2$)] Capacity constraints for enzymes and, e.g., ribosomes.
+  \item[($C_3$)] Density constraints.
 \end{itemize}
 
 All these constraints are linear (in)equalities.
@@ -119,18 +119,21 @@ mathematical purity.
 \section{Matrix variables}
 
 \begin{itemize}
-  \item Fluxes through metabolic reactions, labelled $\nu_1$ to $\nu_R$.
-  \item Enzyme concentrations, labelled $e_1$ to $e_E$.
-  \item Process machinery concentrations, labelled $p_1$ to $p_P$.
-  \item Target values, labelled $t_1$ to $t_T$.
+  \item Fluxes through metabolic reactions $R = (\nu_1, \ldots ,\nu_R)$.
+  \item Enzyme concentrations $E = (e_1, \ldots, e_E)$.
+  \item Process machinery concentrations $P = (p_1, \ldots, p_P)$.
+  \item Target values $T = (t_1, \ldots, t_T)$.
   Targets may be expressed as fluxes or concentrations.
-  In the following we assume that flux targets are all listed first.
+  We note target fluxes $TF$ and target concentrations $TC$.
+  When necessary, we assume that flux targets are all listed first,
+  i.e., $T = (TF, TC)$.
+
 \end{itemize}
 Targets are reactions that are necessary for the cell to be functional
 (e.g. keeping key metabolites at some given concentration).
-Note that target values may actually be set values,
+Note that target values may actually be predetermined values,
 while all others are true variables that must be optimized.
-We will see later how set values may be eliminated.
+We will see later how predetermined values may be eliminated.
 
 \input{constraint_matrices}
 \clearpage

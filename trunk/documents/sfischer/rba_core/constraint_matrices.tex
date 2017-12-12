@@ -4,7 +4,7 @@
 \subsection{Mass conservation ($C_1$)}
 
 The mass conservation constraint is represented by a matrix where rows
-are metabolites, labelled $m_1$ to $m_M$.
+are metabolites, labelled $M = (m_1, \ldots, m_M)$.
 Metabolite fluxes must cancel out in order to achive mass conservation.
 Note that numerous variables are expressed as concentrations and must be
 converted to fluxes as explained previously.
@@ -22,7 +22,7 @@ by the growth-rate.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\linewidth]{mass_conservation}
+  \includegraphics[width=\linewidth]{mass_conservation}
   \caption{Mass conservation constraint.
   Bars in the main matrix are metabolic reaction or
   production/degradation vectors associated with each variable.}
@@ -54,7 +54,7 @@ Process machineries participate in the synthesis/degradation of several
 macromolecules (enzymes, machineries and targets).
 For every target, we have a constraint of the form
 \[
-   [machinery_cost].[e; p; t] \leq k_{machinery} p_i
+   [machinery\_cost].[E, P, T]^T \leq k_{machinery} p_i
 \]
 Every macromolecule has a set of machinery costs associated with it.
 It tells how much a machinery is used in order to produce/degrade the
@@ -68,7 +68,7 @@ Note that we did not need to convert concentrations to fluxes here.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\linewidth]{capacity_constraints}
+  \includegraphics[width=\linewidth]{capacity_constraints}
   \caption{Capacity constraints.}
   \label{fig:capacity_constraints}
 \end{figure}
@@ -76,7 +76,7 @@ Note that we did not need to convert concentrations to fluxes here.
 \subsection{Density constraints ($C_3$)}
 
 Density constraints are represented by matrices where rows are compartments,
-labelled $c_1 to c_C$.
+labelled $C = (c_1, \ldots, c_C)$.
 
 Every variable that represents a concentration participates to this constraint.
 For every macromolecule, we define a weight vector that defines how much
@@ -90,7 +90,7 @@ Again, no conversion from concentration to flux is needed here.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\linewidth]{density_constraints}
+  \includegraphics[width=\linewidth]{density_constraints}
   \caption{Density constraints.}
   \label{fig:density_constraints}
 \end{figure}
