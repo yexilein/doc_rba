@@ -1,8 +1,7 @@
 
 \section{parameters.xml}
 
-The parameter file contains density constraints for the RBA model,
-user-defined parameters and functions.
+The parameter file contains user-defined parameters and functions.
 
 
 \subsection{RBAParameters}
@@ -23,57 +22,12 @@ It includes exactly one instance of \textbf{ListOf} container classes.
 All \textbf{ListOf} classes do not have own attributes,
 they are merely used to organize a list of instances from another class.
 
-
-\subsection{TargetDensity}
-\label{sec:target_density}
-
-The \targetdensity{} class is used to define density constraints
-(Fig.~\ref{fig:parameters_target_density}).
-In a RBA model, a density constraint defines how many molecules
-a given compartment can contain.
-It inherits \targetvalue{} for the constraint definition part.
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.8]{figures/parameters_target_density}
-  \caption{Class used to store density constraints.}
-\label{fig:parameters_target_density}
-\end{figure}
-
-\paragraph{The \textit{compartment} attribute}
-The \textbf{compartment} attribute must match the identifier of a \compartment.
-
-
-\subsection{TargetValue}
-\label{sec:target_value}
-
-The \targetvalue{} class is used to define the sign of an additional RBA
-constraint and the value of its second member
-(Fig.~\ref{fig:parameters_target_density}).
-It is designed to be inherited.
-The child class usually holds information about the first member of the
-constraint
-(\textit{e.g.} compartment for a density constraint,
-metabolite for a production constraint).
-
-\paragraph{The \textit{value}, \textit{lb} and \textit{ub} attributes}
-Every attribute can be left undefined, set to a real number or
-contain the identifier of a \function{} or an \aggregate.
-In the latter case, its value will be growth-rate dependent.
-
-If \textbf{value} is defined, the constraint is an equally constraint.
-\textbf{lb} and \textbf{ub} are ignored.
-If \textbf{value} is undefined, \textbf{lb} (resp. \textbf{ub}) defines
-a lower bound (resp.\ upper bound) inequality constraint.
-Note that \textbf{lb} and \textbf{ub} may both be defined, yielding two
-separate inequality constraints.
-
 \subsection{Function}
 \label{sec:function}
 
 The \function{} class is used for user-defined functions and parameters
 (Fig.~\ref{fig:parameters_function}).
-Implictly, all functions defined here are functions of \emph{growth rate}.
+The default variable of a function is the growth rate.
 Every function holds a \textbf{ListOfParameters},
 where \parameter{} are defined according to each type of function.
 
@@ -86,6 +40,11 @@ where \parameter{} are defined according to each type of function.
 
 \paragraph{The \textit{id} attribute}
 The \textbf{id} attribute is a string defining the identifier of the function.
+
+\paragraph{The \textit{variable} attribute}
+The \textbf{variable} attribute is a string defining the variable of the function.
+If empty or set to \texttt{growth\_rate}, the variable is the current growth rate.
+Alternatively, the variable may the prefix of a metabolite.
 
 \paragraph{The \textit{type} attribute}
 The \textbf{type} attribute is a string that must match a known function type.

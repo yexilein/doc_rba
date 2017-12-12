@@ -25,13 +25,15 @@
 \newcommand{\speciesreference}{\hyperref[sec:species_reference]{\textbf{SpeciesReference}}}
 % parameters
 \newcommand{\rbaparameters}{\hyperref[sec:rba_parameters]{\textbf{RBAParameters}}}
-\newcommand{\targetdensity}{\hyperref[sec:target_density]{\textbf{TargetDensity}}}
-\newcommand{\targetvalue}{\hyperref[sec:target_value]{\textbf{TargetValue}}}
 \newcommand{\function}{\hyperref[sec:function]{\textbf{Function}}}
 \newcommand{\parameter}{\hyperref[sec:parameter]{\textbf{Parameter}}}
 \newcommand{\aggregate}{\hyperref[sec:aggregate]{\textbf{Aggregate}}}
 \newcommand{\functionreference}{\hyperref[sec:function_reference]{\textbf{FunctionReference}}}
-%macromolecules
+% density
+\newcommand{\rbadensity}{\hyperref[sec:rba_density]{\textbf{RBADensity}}}
+\newcommand{\targetdensity}{\hyperref[sec:target_density]{\textbf{TargetDensity}}}
+\newcommand{\targetvalue}{\hyperref[sec:target_value]{\textbf{TargetValue}}}
+% macromolecules
 \newcommand{\rbamacromolecules}{\hyperref[sec:rba_macromolecules]{\textbf{RBAMacromolecules}}}
 \newcommand{\component}{\hyperref[sec:component]{\textbf{Component}}}
 \newcommand{\macromolecule}{\hyperref[sec:macromolecule]{\textbf{Macromolecule}}}
@@ -41,19 +43,18 @@
 \newcommand{\process}{\hyperref[sec:process]{\textbf{Process}}}
 \newcommand{\machinery}{\hyperref[sec:machinery]{\textbf{Machinery}}}
 \newcommand{\machinerycomposition}{\hyperref[sec:machinery_composition]{\textbf{MachineryComposition}}}
-\newcommand{\operations}{\hyperref[sec:operations]{\textbf{Operations}}}
-\newcommand{\operation}{\hyperref[sec:operation]{\textbf{Operation}}}
-\newcommand{\componentmap}{\hyperref[sec:component_map]{\textbf{ComponentMap}}}
-\newcommand{\constantcost}{\hyperref[sec:constant_cost]{\textbf{ConstantCost}}}
-\newcommand{\cost}{\hyperref[sec:cost]{\textbf{Cost}}}
-\newcommand{\targets}{\hyperref[sec:targets]{\textbf{Targets}}}
+\newcommand{\processings}{\hyperref[sec:processings]{\textbf{Processings}}}
+\newcommand{\processing}{\hyperref[sec:processing]{\textbf{Processing}}}
+\newcommand{\processingmap}{\hyperref[sec:processing_map]{\textbf{ProcessingMap}}}
+\newcommand{\constantprocessing}{\hyperref[sec:constant_processing]{\textbf{ConstantProcessing}}}
+\newcommand{\componentprocessing}{\hyperref[sec:component_processing]{\textbf{ComponentProcessing}}}
+% enzymes
+\newcommand{\rbaenzymes}{\hyperref[sec:rba_enzymes]{\textbf{RBAEnzymes}}}
+\newcommand{\enzyme}{\hyperref[sec:enzyme]{\textbf{Enzyme}}}
+% targets
+\newcommand{\rbatargets}{\hyperref[sec:rba_targets]{\textbf{RBATargets}}}
 \newcommand{\targetspecies}{\hyperref[sec:target_species]{\textbf{TargetSpecies}}}
 \newcommand{\targetreaction}{\hyperref[sec:target_reaction]{\textbf{TargetReaction}}}
-% enzymes
-\newcommand{\rbaenzymes}{\hyperref[sec:rba_enzymes]{\textbf{RBAenzymes}}}
-\newcommand{\enzyme}{\hyperref[sec:enzyme]{\textbf{Enzyme}}}
-\newcommand{\enzymaticactivity}{\hyperref[sec:enzymatic_activity]{\textbf{EnzymaticActivity}}}
-\newcommand{\enzymeefficiency}{\hyperref[sec:enzyme_efficiency]{\textbf{EnzymeEfficiency}}}
 
 
 
@@ -63,7 +64,7 @@
 \begin{document}
 
 \title{XML format for RBA models}
-\author{S. Fischer, V. Fromion, A. Goelzer}
+\author{BioSys group, INRA Jouy, France}
 \date{\today}
 
 \maketitle
@@ -82,14 +83,17 @@ A complete RBA model is composed of the following files:
   \item metabolism.xml
   (definition of compartments, metabolic species and metabolic reactions).
   \item parameters.xml
-  (definition of density constraints and user-defined functions).
+  (definition of user-defined functions).
+  \item density.xml (definition of density constraints).
   \item proteins.xml (definition of proteins).
   \item rnas.xml (definition of RNAs).
   \item dna.xml (definition of DNA).
   \item enzymes.xml
   (definition of enzymatic machineries catalyzing metabolic reactions).
   \item processes.xml
-  (definition of cell processes necessary to growth and maintenance).
+  (definition of cell processes used to produce macromolecules).
+  \item targets.xml
+  (definition of production targets necessary to growth and maintenance).
 \end{itemize}
 
 For every file, we present the nodes that compose the XML structure.
@@ -116,15 +120,19 @@ A boolean attribute evaluates to true if it is \texttt{"1"}
 or \texttt{"true"} (case does not matter).
 In all other cases it evaluates to false.
 
-\subsection{Variable for transport functions}
+\subsection{Variables for user-defined functions}
 
+The default variable for functions is the growth rate.
+It can also be explicitly defined as by the string \texttt{growth\_rate}.
+Alternatively, a function can take as an input the \emph{external}
+concentration of a metabolite (e.g. for transport functions).
 A metabolite identifier is expected to look like \texttt{M\_met\_c},
 where \textbf{M} is a generic prefix (identical for all metabolites),
 \textbf{met} is the name of the metabolite
 and \textbf{c} its compartment.
-The variable for a transport function (see \enzymaticactivity) must be the
+The variable for a function must be the
 \emph{prefix} of a metabolite, in this case \texttt{M\_met}.
-Every time a transport function based on \textbf{met} is evaluated,
+Every time a function based on \textbf{met} is evaluated,
 the external concentration is used
 \emph{no matter where the transport takes place}.
 Typically, glucose import rates from the periplasm to the cytosol
@@ -132,9 +140,11 @@ will be based on the concentration of extracellular glucose.
 
 \input{xml_metabolism}
 \input{xml_parameters}
+\input{xml_density}
 \input{xml_macromolecules}
 \input{xml_processes}
 \input{xml_enzymes}
+\input{xml_targets}
 
 
 \end{document}
