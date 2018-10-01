@@ -1,13 +1,13 @@
 
 \section{proteins.xml, rnas.xml and dna.xml}
 
-All these files use instances of the class \rbamacromolecules.
+All these files are base on the same class \rbamacromolecules.
 
 
 \subsection{RBAMacromolecules}
 \label{sec:rba_macromolecules}
 
-The outermost portion of the metabolism file is an instance of class
+The outermost portion of the protein, RNA and DNA files is an instance of class
 \rbamacromolecules, shown in Figure~\ref{fig:macromolecules}.
 
 \begin{figure}
@@ -29,8 +29,10 @@ The \component{} class is used to define the components of a \macromolecule{}
 (Fig.~\ref{fig:macromolecules}).
 For example, these are expected to be amino acids, vitamins and ions for
 proteins.
-Note that they use separate identifiers as metabolic \species.
-\processingmap{}s define how they are assembled from metabolites.
+Even if there is a strong connection between metabolic \species and \component{}s,
+they are seen as independent entities with separate identifiers \species.
+The connection between \species and \component{}s is established in the process file,
+where \processingmap{}s define how components are assembled from metabolites.
 
 
 \paragraph{The \textit{id} attribute}
@@ -42,11 +44,11 @@ component.
 This information is essential for the density constraints.
 The weight of a macromolecule is defined as the sum of the weight of its
 components.
-Note that units used for the weight constraint must be consistent across
-files.
+The weight unit is unspecified, however it should be consistent with the parameters
+used in the density constraints.
 
 \paragraph{The \textit{name} and \textit{type} attributes}
-The \textbf{name} and \textbf{type} attributes are string that provide
+The \textbf{name} and \textbf{type} attributes are strings that provide
 additional information about the component.
 The name is a standard name of the component
 (\textit{e.g.} full amino acid name).
@@ -82,5 +84,6 @@ defined in the same \rbamacromolecules{} instance.
 
 \paragraph{The \textit{stoichiometry} attribute}
 The \textbf{stoichiometry} is a positive real number.
-It repensents the stoichiometry of a \component{} in a given context
-(typically the composition of a \macromolecule).
+It represents the stoichiometry of a \component{}
+(typically how often it appears in a \macromolecule,
+e.g.\ the number of alanine residues in a protein).

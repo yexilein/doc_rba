@@ -3,6 +3,7 @@
 
 The metabolism file is strongly inspired by SBML.\@
 More precisely, it can be seen as a subpart of an SBML file.
+It is used to define compartments, metabolites and reactions.
 
 
 \subsection{RBAMetabolism}
@@ -19,7 +20,7 @@ The outermost portion of the metabolism file is an instance of class
 \end{figure}
 
 Currently, \rbametabolism{} has no simple attributes.
-It includes exactly one instance of \textbf{ListOf} container classes.
+It includes exactly one instance of each \textbf{ListOf} container class.
 All \textbf{ListOf} classes do not have own attributes,
 they are merely used to organize a list of instances from another class.
 This organization was inspired by SBML.\@
@@ -32,6 +33,7 @@ The \compartment{} class is used to list existing cell compartments.
 
 \paragraph{The \textit{id} attribute}
 The \textbf{id} attribute is a string defining the identifier of a compartment.
+Every compartment should have a different id.
 
 
 \subsection{Species}

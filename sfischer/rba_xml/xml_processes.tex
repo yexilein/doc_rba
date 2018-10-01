@@ -3,6 +3,24 @@
 
 The process file is used to define cellular processes involved in
 the production or degradation of macromolecules.
+\process{}es can be seen as template reactions that specify how \macromolecule{}s
+are produced and degraded based on their \component{}s.
+A typical example is translation: a \machinery{} (the ribosome) assembles
+proteins based on their amino acid sequence (\component{}s).
+Every amino acid is assembled using metabolic \species, in particular tRNAs.
+However, the \species{} that are used differ from amino acid to amino acid.
+The \processingmap{} explicits how every \component{} is processed, i.e.
+what \species{} are consumed (e.g. charged tRNAs, GTP) and what \species{} are
+produced (e.g. uncharged tRNAs, GDP).
+Briefly put, \process{}es define one reaction per \component(), frow which
+the production/degradation reactions of all \macromolecule{}s can be deduced.
+
+\macromolecule{}s can go through several \process{}es:
+for example, proteins may undergo translation, folding and translocation.
+The \processings{} element is used to specify what macromolecule goes
+through which process.
+The overall production/degradation reaction of a \macromolecule{} reflects
+all the \process{}es it traverses.
 
 \subsection{RBAProcesses}
 \label{sec:rba_processes}
@@ -17,7 +35,7 @@ The outermost portion of the process file is an instance of class
 \label{fig:processes_doc}
 \end{figure}
 
-\rbamacromolecules{} has no simple attributes.
+\rbaprocesses{} has no simple attributes.
 It contains exactly one instance of \textbf{ListOfProcesses}
 and \textbf{ListOfProcessingMaps}.
 
@@ -27,7 +45,6 @@ and \textbf{ListOfProcessingMaps}.
 
 The \process{} class is used to define cellular processes
 (Fig.~\ref{fig:processes_process}).
-Processes cover a wide variety of non-metabolic reactions.
 
 \begin{figure}
   \centering
@@ -62,7 +79,7 @@ and \machinery{} costs.
 \paragraph{The \textit{id} attribute}
 The \textbf{id} attribute is a string defining the identifier of a process.
 
-\paragraph{The \textit{name} attirbute}
+\paragraph{The \textit{name} attribute}
 The \textbf{name} attribute is a string that can be used to give the process
 a more human understandable name.
 
@@ -86,11 +103,12 @@ must always exceed the number of targets produced.
 \subsection{MachineryComposition}
 \label{sec:machinery_composition}
 
-The \machinerycomposition{} class defines the assembly costs of a complex
+The \machinerycomposition{} class defines the assembly of a complex
 molecular machinery (Fig.~\ref{fig:processes_process}).
 \machinerycomposition{} has no simple attributes.
 It contains two \textbf{ListOfSpeciesReferences}.
-One is for reactants, the other for byproducts of the assembly reaction.
+One is for reactants, the other for potential byproducts of the assembly reaction
+of the complex itself (e.g. GDP when connecting ribosomal subunits).
 Note that in this case, \speciesreference{}s can refer to \emph{both}
 metabolic \species{} and \macromolecule{}s.
 The assembly reaction should contain obvious components of the machinery,

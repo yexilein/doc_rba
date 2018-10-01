@@ -27,7 +27,8 @@ they are merely used to organize a list of instances from another class.
 
 The \function{} class is used for user-defined functions and parameters
 (Fig.~\ref{fig:parameters_function}).
-The default variable of a function is the growth rate.
+The default variable of a function is the growth rate, but it may also be
+the extracellular concentration of a metabolite.
 Every function holds a \textbf{ListOfParameters},
 where \parameter{} are defined according to each type of function.
 
@@ -58,9 +59,14 @@ Currently, the supported types are:
   \textit{LINEAR\_CONSTANT}, \textit{LINEAR\_COEF},
   \textit{X\_MIN}, \textit{X\_MAX}, \textit{Y\_MIN}, \textit{Y\_MAX}.
   The 4 last parameters are used to saturate the function.
-  If the variable (growth rate) is outside of the [X\_MIN,~X\_MAX] range,
+  The computation is done in three steps.
+  First, if the variable (e.g. growth rate) is outside of the [X\_MIN,~X\_MAX] range,
   it is set to the closest value in that range.
-  The same applies for the return value and the [Y\_MIN,~Y\_MAX] range.
+  Second, the function is computed.
+  Finally, if the return value is outside of the [Y\_MIN,~Y\_MAX] range,
+  it is set to the closest value in that range.
+  The range parameters can be set to infinity by setting them to
+  \texttt("-inf") or \texttt("inf").
   \item \textbf{exponential}.
   Exponential function with parameter \textit{RATE}.
   \item \textbf{indicator}.
@@ -69,7 +75,7 @@ Currently, the supported types are:
   This function returns one if the variable (growth rate) is in the
   [X\_MIN,~X\_MAX], zero otherwise.
   \item \textbf{michaelisMenten}.
-  Michaelis Menten function with parameters
+  Irreversible Michaelis Menten function with parameters
   \textit{kmax}, \textit{Km} and \textit{Y\_MIN} (optional).
   If Y\_MIN is defined, any return value lower than Y\_MIN will be set to
   Y\_MIN.\@

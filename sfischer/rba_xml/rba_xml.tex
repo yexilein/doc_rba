@@ -93,9 +93,11 @@ A complete RBA model is composed of the following files:
   \item processes.xml
   (definition of cell processes used to produce macromolecules).
   \item targets.xml
-  (definition of production targets necessary to growth and maintenance).
+  (definition of  necessary to growth and maintenance).
 \end{itemize}
 
+A valid RBA model must contain all these files with these exact names in
+the same directory to be recognized by the RBApy parser.
 For every file, we present the nodes that compose the XML structure.
 For every node, we show a class diagram that shows the node's attributes
 and the children nodes that it may/must contain.
@@ -105,14 +107,29 @@ in the RBA model.
 
 \section{Conventions}
 
-\subsection{Naming conventions}
+\subsection{Naming conventions in XML and RBApy}
 
-In XML, classes follow ThisConvention, instances thisConvention.
-In the Python package, classes follow ThisConvention, instances this\_convention.
-In the Python package, instance listOfThings simply becomes things.
+All XML elements described here can be accessed with the RBApy package.
+For example, the XML element Reaction can be accessed through python objects
+of class Reaction.
+This mirrorring scheme (every XML element has a corresponding python class) is
+inspired by the scheme used in SBML and libSBML.
+However, as in libSBML, the naming conventions may differ between python and XML:
+
+\begin{itemize}
+  \item XML elements and python classes both follow \texttt{ThisConvention} (e.g. \texttt{SpeciesReference}).
+  \item XML attributes follow \texttt{thisConvention} (e.g.\ \texttt{boundaryCondition}), while
+    python attributes follow \texttt{this\_convention} (e.g.\ \texttt{boundary\_condition}).
+  \item In XML, list elements follow the convention \texttt{listOfThings}
+    when they are seen as an instance/subelement
+    (e.g. \texttt{RBAMetabolism} contains one instance of \texttt{ListOfCompartments} called \texttt{listOfCompartments}).
+    In python, the \texttt{listOf} prefix is dropped and lower case is used
+    (e.g. \texttt{RBAMetabolism} contains one instance of \texttt{ListOfCompartments} called \texttt{compartments}).
+\end{itemize}
+
 Throughout this document, XML conventions are used.
-Keep in mind that the convention for instances is different when using the
-Python package.
+Please keep in mind that the convention for attributes/instances is different when using the
+python package.
 
 \subsection{Boolean attributes}
 
@@ -126,14 +143,12 @@ The default variable for functions is the growth rate.
 It can also be explicitly defined as by the string \texttt{growth\_rate}.
 Alternatively, a function can take as an input the \emph{external}
 concentration of a metabolite (e.g. for transport functions).
-A metabolite identifier is expected to look like \texttt{M\_met\_c},
-where \textbf{M} is a generic prefix (identical for all metabolites),
-\textbf{met} is the name of the metabolite
-and \textbf{c} its compartment.
-The variable for a function must be the
-\emph{prefix} of a metabolite, in this case \texttt{M\_met}.
-Every time a function based on \textbf{met} is evaluated,
-the external concentration is used
+A metabolite identifier is expected to look like \texttt{met\_c},
+where \texttt{met} is the name of the metabolite
+and \texttt{c} its compartment.
+Note that in the current version of RBApy,
+every time a function based on \texttt{met\_c} is evaluated,
+the compartment suffix is ignored and the extracellular concentration of the metabolite is used
 \emph{no matter where the transport takes place}.
 Typically, glucose import rates from the periplasm to the cytosol
 will be based on the concentration of extracellular glucose.
