@@ -63,7 +63,7 @@
 % ==========
 \begin{document}
 
-\title{XML format for RBA models}
+\title{XML format for RBA models, version 1}
 \author{BioSys group, INRA Jouy, France}
 \date{\today}
 
@@ -82,9 +82,6 @@ A complete RBA model is composed of the following files:
 \begin{itemize}
   \item metabolism.xml
   (definition of compartments, metabolic species and metabolic reactions).
-  \item parameters.xml
-  (definition of user-defined functions).
-  \item density.xml (definition of density constraints).
   \item proteins.xml (definition of proteins).
   \item rnas.xml (definition of RNAs).
   \item dna.xml (definition of DNA).
@@ -92,24 +89,39 @@ A complete RBA model is composed of the following files:
   (definition of enzymatic machineries catalyzing metabolic reactions).
   \item processes.xml
   (definition of cell processes used to produce macromolecules).
+  \item density.xml (definition of density constraints).
   \item targets.xml
-  (definition of  necessary to growth and maintenance).
+  (definition of production or degradation constraints necessary for growth and maintenance).
+  \item parameters.xml
+  (definition of user-defined functions).
 \end{itemize}
 
 A valid RBA model must contain all these files with these exact names in
 the same directory to be recognized by the RBApy parser.
-For every file, we present the nodes that compose the XML structure.
-For every node, we show a class diagram that shows the node's attributes
-and the children nodes that it may/must contain.
-We provide a brief description about the relevance of the node
-in the RBA model.
+We dedicate one section of this document for every file.
+Each section starts with a subsection containing a brief description
+about the relevance of the node in the RBA model.
+The second subsection is more technical:
+we present the nodes that compose the XML structure
+and show a class diagram that the nodes' attributes
+and the children nodes that they may/must contain.
+The last subsection presents real or simplified examples with typical values
+for every attribute.
 
 
 \section{Conventions}
 
+Before we start looking into files, we briefly review the conventions we used for the RBA format.
+
 \subsection{Naming conventions in XML and RBApy}
 
-All XML elements described here can be accessed with the RBApy package.
+We strongly advise \textbf{not} to modify XML files directly.
+Instead, RBApy can be used to access the XML files and modify them through scripts.
+Writing scripts allows you to reproduce all the modifications you have made automatically.
+For example, if you need to regenerate the basic XML model with preRBA, you will be able
+to re-apply all the modifications that you had done on your orginal model.
+
+All XML elements can be accessed with the RBApy package.
 For example, the XML element Reaction can be accessed through python objects
 of class Reaction.
 This mirrorring scheme (every XML element has a corresponding python class) is
@@ -153,13 +165,29 @@ the compartment suffix is ignored and the extracellular concentration of the met
 Typically, glucose import rates from the periplasm to the cytosol
 will be based on the concentration of extracellular glucose.
 
+\subsection{Units}
+
+In the current version of RBApy, units are implicitly defined!
+It is left to the user to make sure that the model is consistent.
+For example, density constraints rely on a weight unit that is used in the
+density file (density.xml) and the macromolecule files (proteins.xml, rnas.xml,
+dna.xml).
+You need to make sure that you use the same unit in all files!
+In the density example, our group usually uses amino acids as a weight unit.
+The density file sets an upper limit in the number of amino acids that can be
+contained in the cell.
+The protein file defines the weight of all amino acid residues to be 1.
+For RNAs and DNA, we convert the weight of nucleotides to amino acid equivalents.
+For example, the weight of an Adenosine residue is 2.9036
+(a nucleotide is heavier than an amino acid).
+
 \input{xml_metabolism}
-\input{xml_parameters}
-\input{xml_density}
 \input{xml_macromolecules}
-\input{xml_processes}
 \input{xml_enzymes}
+\input{xml_processes}
+\input{xml_density}
 \input{xml_targets}
+\input{xml_parameters}
 
 
 \end{document}
