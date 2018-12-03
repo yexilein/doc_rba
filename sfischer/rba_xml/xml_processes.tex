@@ -1,10 +1,89 @@
 
 \section{processes.xml}
 
+\subsection{Rationale}
+
 The process file is used to define cellular processes involved in
 the production or degradation of macromolecules.
-\process{}es can be seen as template reactions that specify how \macromolecule{}s
-are produced and degraded based on their \component{}s.
+In proteins.xml, rnas.xml and dna.xml, we have described proteins in terms of
+components (amino acid residues, nucteotides, protein cofactors).
+processes.xml defines how components are assembled from metabolites and
+what machines are needed to catalyze the assembly.
+
+A typical example of a cellular process is protein translation.
+Translation relies on ribosomes as a molecular machine,
+and participates in protein production.
+The metabolites used during proteins assembly include
+charged and uncharged-tRNAs and GTP/GDP,
+e.g.\ an alanine residue is obtained by using a charged tRNA-alanine and GTP as
+reactants, generating an uncharged tRNA, GDP and water as a byproduct.
+
+Theoretically, the translation of a protein could be written down as a single reaction,
+with
+
+with specific tRNAs used
+to cite a few, which correspond to the processing costs of the ribosome.
+Since the amino-acid composition of proteins is known from the genome sequence,
+protein production could theoretically be described by metabolic-like reactions
+involving charged-/uncharged-tRNAs, GTP/GDP, one per protein, according to the SBML format.
+But specifying all these reactions explicitly for each protein species
+would be a laborious and error-prone if we have to consider the entire cell.
+
+Indeed, macromolecules such as proteins typically undergo several processes
+(translation, chaperoning, translocation),
+making them effectively processed by several machines operating in series.
+To account for such a level of detail,
+one would need to define one reaction per macromolecule per process undergone,
+with the appropriate molecular machine such as an enzyme or a ribosome.
+The description of models in SBML is protein- or gene- centred,
+meaning that the fate of each protein has to be described explicitly by individual reactions.
+Therefore, if a resource allocation model contains 1000 proteins,
+and if all proteins require chaperones for folding,
+1000 reactions for protein synthesis and 1000 reactions for chaperoning,
+2000 reactions would have to be listed in the SBML file.
+The SBML file would thus grow very rapidly and would contain thousands of closely related reactions,
+making it extremely difficult to check the consistency of reactions
+or to update them upon addition of a new process.
+This problem would become even more severe if of processes are further subdivided
+into smaller steps, e.g., ribosome binding, chain elongation, and ribosome unbinding.
+
+An alternative description consists in defining only one template reaction per cellular process,
+which produces a list of macromolecules.
+This definition is now process-centred instead of being protein-centred,
+and offers a simpler and clearer view of how macromolecules are produced.
+This process-centred representation is generic,
+flexible and adaptable to a large set of bacterial cells.
+It was also shown to be an efficient framework to interrelate various cellular entities
+(metabolites, proteins, cellular processes, sequences, etc.)
+with their physical or biochemical properties (e.g. kinetic parameters, etc.)
+within whole-cell models.
+Unfortunately, such template reactions cannot be encoded with current SBML releases.
+Consequently, for encoding resource allocation models in RBApy,
+we chose not to follow a protein-centred representation as in SBML,
+but the formal process-centred representation of the bioontology BiPON.
+The principle behind BiPON is to break down the cell into intertwined cellular processes,
+where each cellular process is described as an input/output system.
+In RBApy, every cellular process is described by (1) the molecular machine that
+catalyzes the process, (2) the list of macromolecules to be processed or produced,
+(3) the processing costs, and (4) the efficiency of the molecular machine in catalyzing the process,
+which corresponds to the rate of the process per amount of process machinery
+(e.g. translation rate for ribosomes).
+We designed an XML template that helps to define the processing costs,
+the composition of the molecular machine and the list of macromolecules to be processed
+(see Supplementary Note S5).
+Then, defining a new cellular process is straightforward and necessitates
+only a few steps for the user (see Supplementary Note S5).
+The cost of all newly targeted processed macromolecules is updated automatically.
+For example, if a model needsis supposed to cover protein secretion,
+translocation processes may be added.
+As soon as a protein is listed as an input of one of the translocation processes,
+its overall production cost will be updated (Supplementary Figure S11).
+Molecular machines can be easily described by listing their individual components
+(proteins, RNAs, metabolites) together with their stoichiometries.
+
+
+\process{}es can be seen as template reactions that specify how
+\macromolecule{}s are produced and degraded based on their \component{}s.
 A typical example is translation: a \machinery{} (the ribosome) assembles
 proteins based on their amino acid sequence (\component{}s).
 Every amino acid is assembled using metabolic \species, in particular tRNAs.
@@ -25,7 +104,7 @@ all the \process{}es it traverses.
 \subsection{RBAProcesses}
 \label{sec:rba_processes}
 
-The outermost portion of the process file is an instance of class
+The outermost part of the process file is an instance of class
 \rbaprocesses, shown in Figure~\ref{fig:processes_doc}.
 
 \begin{figure}
