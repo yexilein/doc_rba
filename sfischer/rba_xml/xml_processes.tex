@@ -19,87 +19,57 @@ e.g.\ an alanine residue is obtained by using a charged tRNA-alanine and GTP as
 reactants, generating an uncharged tRNA, GDP and water as a byproduct.
 
 Theoretically, the translation of a protein could be written down as a single reaction,
-with
-
-with specific tRNAs used
-to cite a few, which correspond to the processing costs of the ribosome.
-Since the amino-acid composition of proteins is known from the genome sequence,
-protein production could theoretically be described by metabolic-like reactions
-involving charged-/uncharged-tRNAs, GTP/GDP, one per protein, according to the SBML format.
-But specifying all these reactions explicitly for each protein species
-would be a laborious and error-prone if we have to consider the entire cell.
-
-Indeed, macromolecules such as proteins typically undergo several processes
+listing all charged-/uncharged-tRNAs, GTP/GDP, according to the SBML format.
+In a model containing 1000 proteins, we would have to write 1000 reactions
+that follow the same template.
+Now, if we add other processes undergone by proteins
 (translation, chaperoning, translocation),
-making them effectively processed by several machines operating in series.
-To account for such a level of detail,
-one would need to define one reaction per macromolecule per process undergone,
-with the appropriate molecular machine such as an enzyme or a ribosome.
-The description of models in SBML is protein- or gene- centred,
-meaning that the fate of each protein has to be described explicitly by individual reactions.
-Therefore, if a resource allocation model contains 1000 proteins,
-and if all proteins require chaperones for folding,
-1000 reactions for protein synthesis and 1000 reactions for chaperoning,
-2000 reactions would have to be listed in the SBML file.
-The SBML file would thus grow very rapidly and would contain thousands of closely related reactions,
-making it extremely difficult to check the consistency of reactions
-or to update them upon addition of a new process.
-This problem would become even more severe if of processes are further subdivided
-into smaller steps, e.g., ribosome binding, chain elongation, and ribosome unbinding.
+we would have to add more reactions per protein to account for the fact that each
+process is catalyzed by the appropriate molecular machine such as an enzyme or a ribosome.
+For example, if all proteins need chaperones for folding,
+we need to add 1000 reactions for chaperoning to the pre-existing
+1000 reactions for reaction synthesis.
+If we add translocation/transport of proteins to target locations,
+that's 1000 more reactions.
+If we update the template of one of the process,
+e.g. we revise the number of GTPs that are consumed per amino acid for protein synthesis,
+we need to rewrite all 1000 reactions describing protein synthesis,
+which is an extremely error-prone process.
 
-An alternative description consists in defining only one template reaction per cellular process,
-which produces a list of macromolecules.
-This definition is now process-centred instead of being protein-centred,
-and offers a simpler and clearer view of how macromolecules are produced.
-This process-centred representation is generic,
-flexible and adaptable to a large set of bacterial cells.
-It was also shown to be an efficient framework to interrelate various cellular entities
-(metabolites, proteins, cellular processes, sequences, etc.)
-with their physical or biochemical properties (e.g. kinetic parameters, etc.)
-within whole-cell models.
-Unfortunately, such template reactions cannot be encoded with current SBML releases.
-Consequently, for encoding resource allocation models in RBApy,
-we chose not to follow a protein-centred representation as in SBML,
-but the formal process-centred representation of the bioontology BiPON.
-The principle behind BiPON is to break down the cell into intertwined cellular processes,
-where each cellular process is described as an input/output system.
-In RBApy, every cellular process is described by (1) the molecular machine that
-catalyzes the process, (2) the list of macromolecules to be processed or produced,
-(3) the processing costs, and (4) the efficiency of the molecular machine in catalyzing the process,
-which corresponds to the rate of the process per amount of process machinery
-(e.g. translation rate for ribosomes).
-We designed an XML template that helps to define the processing costs,
-the composition of the molecular machine and the list of macromolecules to be processed
-(see Supplementary Note S5).
-Then, defining a new cellular process is straightforward and necessitates
-only a few steps for the user (see Supplementary Note S5).
-The cost of all newly targeted processed macromolecules is updated automatically.
-For example, if a model needsis supposed to cover protein secretion,
-translocation processes may be added.
-As soon as a protein is listed as an input of one of the translocation processes,
-its overall production cost will be updated (Supplementary Figure S11).
-Molecular machines can be easily described by listing their individual components
-(proteins, RNAs, metabolites) together with their stoichiometries.
-
-
-\process{}es can be seen as template reactions that specify how
+RBA \process{}es can be seen as template reactions that specify how
 \macromolecule{}s are produced and degraded based on their \component{}s.
-A typical example is translation: a \machinery{} (the ribosome) assembles
-proteins based on their amino acid sequence (\component{}s).
-Every amino acid is assembled using metabolic \species, in particular tRNAs.
-However, the \species{} that are used differ from amino acid to amino acid.
-The \processingmap{} explicits how every \component{} is processed, i.e.
-what \species{} are consumed (e.g. charged tRNAs, GTP) and what \species{} are
-produced (e.g. uncharged tRNAs, GDP).
-Briefly put, \process{}es define one reaction per \component(), frow which
-the production/degradation reactions of all \macromolecule{}s can be deduced.
+Instead of writing one reaction per protein,
+we write one generic reaction per process,
+and proteins are seen as input of these processes.
+Every cellular process is described by
+(1) the molecular machine that catalyzes the process (e.g.\ the ribosome),
+(2) the list of macromolecules to be processed or produced (e.g.\ proteins),
+(3) the processing costs (e.g.\ tRNAs and GTP consumed to assemble an amino acid), and
+(4) the efficiency of the molecular machine in catalyzing the process,
+which corresponds to the rate of the process per amount of process machinery
+(e.g.\ translation rate for ribosomes).
 
-\macromolecule{}s can go through several \process{}es:
-for example, proteins may undergo translation, folding and translocation.
-The \processings{} element is used to specify what macromolecule goes
-through which process.
+The processing costs are defined by a \processingmap{},
+which explicits how every \component{} is processed, i.e.
+what \species{} are consumed and what \species{} are
+produced as byproducts of the assembly process.
+For example, in order to assemble an Alanine residue,
+a charged alanine-tRNA is consumed along with GTP,
+and an uncharged alanine-tRNA and GDP are generated as byproducts.
+\processingmap{}s define one reaction per \component(), frow which
+the overall production/degradation reactions of \macromolecule{}s can be deduced.
+
+Processes are flexible:
+\macromolecule{}s can be listed as input of several processes.
+For example, proteins may undergo translation, folding and translocation.
 The overall production/degradation reaction of a \macromolecule{} reflects
 all the \process{}es it traverses.
+When we modify a process,
+e.g.\ we update the number of GTPs consumed per amino acid,
+it automatically affects the production of all input macromolecules.
+
+
+[FIGURE AVEC EXEMPLE?]
 
 \subsection{RBAProcesses}
 \label{sec:rba_processes}
@@ -297,3 +267,75 @@ it can assemble per unit of time.
 The machinery cost allows to compute how many ribosomes are needed
 to produce the \component{} and, in the end, the \macromolecule{}
 (in this example the number of amino acids divided by the ribosome's capacity).
+
+\subsection{Examples}
+
+The best example to illustrate processes is protein translation
+(Fig.~\ref{fig:processes_ex_1}).
+The XML structures are quite long, but processes depend on 3 relatively
+simple substructures.
+First, we define the process machine.
+The definition is reminiscent of enzymes:
+a machine composition, here all ribosome components (proteins and RNAs),
+and a catalytic rate, here expressed in number of amino acids per hour.
+Second, we list all macromolecules that undergo the process, here all proteins.
+Finally, the processing map, containing one reaction per macromolecule component.
+The question this structure answers is the following:
+my macromolecule contains a component named "alanine residue",
+how do I produce it from metabolites? Is the process machine involved?
+The answers are: for every alanine residue, you consume a charged t-RNA,
+water and GTP, by-producing an uncharged t-RNA, GDP, phosphate and protons.
+The machine cost is an additive cost that is related to the capacity defined earlier.
+For translation, we define the machine cost for every amino acid to be 1.
+In the end the total production cost of a protein is its number of amino acids.
+We defined the ribosome capacity in terms of amino acid per hour, say 1000.
+If a protein has 500 amino acids, a single ribosome will be able to produce
+two copies of this protein per hour.
+
+The machine costs define a capacity constraint for the cell:
+in order to be viable, the cell needs not only to produce essential macrocomponents,
+but also the machines that assemble these macrocomponents.
+Production of machines cannot be neglected, as they increase very rapidly.
+When the production rate of macromolecule increases,
+the amount of machines needed for production increases in a seemingly linear fashion.
+However, machines are themselves composed of macromolecules (\ref{fig:processes_ex_2}),
+and you need more machines to assemble those.
+Roughly speaking, if you want more proteins, you need to produce more ribosomes.
+But if you want more ribosoms, you need ribosomes to produce the new ribosomes.
+In the end the amount of machines increases more than linearly,
+imposing strong constraints on the cell.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.4]{figures/processes_ex_1}
+  \caption{processes.xml from the hand curated model for model bacteria \textit{B. subtilis}.
+  Large chunks of the files were removed for brevity.
+  This example focuses on some aspects of the definition of the translation process.
+  The first element that is defined is the process machine: the ribosome.
+  The machine is defined as a single assemble reaction from
+  macromolecules (ribosomal proteins and rRNAs)
+  and metabolites (GTP needed to assemble ribosomal proteins and rRNAs).
+  Process machines have a catalytic rate termed capacity:
+  for the ribosome, this is the number of amino acids processed per hour,
+  later defined by the parameter P\_TA\_capacity.
+  Finally the process contains the list of macromolecules to produce or degrade,
+  here all the proteins in the model.
+  A processing map explicits how macromolecules are produced from their components.
+  Here, the processing map starts by defining metabolites that are consumed and
+  produced independent of protein composition (translation initiation).
+  We also show how an alanine residue is built from metabolites.}
+  \label{fig:processes_ex_1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.6]{figures/processes_ex_2}
+  \caption{processes.xml from the minimal model.
+  We only define one process corresponding to pseudo-translation.
+  It contains a two-protein machine with a capacity that we will define later.
+  We list all the proteins from the model as input of translation.
+  Proteins only had one component so the processing map is short.
+  We define a constant cost corresponding to translation initiation
+  and metabolites consumed for every residue that has to be assembled. }
+  \label{fig:processes_ex_2}
+\end{figure}
