@@ -47,7 +47,7 @@ Every cellular process is described by
 (3) the processing costs (e.g.\ tRNAs and GTP consumed to assemble an amino acid), and
 (4) the efficiency of the molecular machine in catalyzing the process,
 which corresponds to the rate of the process per amount of process machinery
-(e.g.\ translation rate for ribosomes).
+(e.g.\ translation rate for ribosomes in amino acids per hour).
 
 The processing costs are defined by a \processingmap{},
 which explicits how every \component{} is processed, i.e.
@@ -69,7 +69,7 @@ e.g.\ we update the number of GTPs consumed per amino acid,
 it automatically affects the production of all input macromolecules.
 
 
-[FIGURE AVEC EXEMPLE?]
+[FIGURE AVEC EXEMPLE? protéine-centré vs générique]
 
 \subsection{RBAProcesses}
 \label{sec:rba_processes}
@@ -339,3 +339,7 @@ imposing strong constraints on the cell.
   and metabolites consumed for every residue that has to be assembled. }
   \label{fig:processes_ex_2}
 \end{figure}
+
+Autres exemples:
+0.1 du chaperoning quand on ne sait pas quelles protéines sont foldées.
+90\% des protéines membranaires et extracellulaires sont sécrétées à 1 ATP pour 100 acides aminés, qu’est-ce que je définis dans mon processes.xml?

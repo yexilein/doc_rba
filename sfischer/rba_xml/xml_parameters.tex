@@ -3,6 +3,33 @@
 
 The parameter file contains user-defined parameters and functions.
 
+\subsection{Rationale}
+
+The file parameters.xml contains all numerical values occurring in the model
+(except for stoichiometries).
+Nearly all other files refer to this file, as we have seen throughout the
+examples, where numerical values were defined as parameter identifiers.
+The most common parameters are: total amino acid concentrations,
+fractions of protein per compartment,
+percentages of non-enzymatic protein per compartment and cellular machinery,
+target fluxes for metabolites and macromolecules, efficiencies of enzymes,
+transporters and molecular machines.
+
+A parameter may be defined as: a constant, a function of growth rate,
+or a function of an external metabolite concentrations (defined in medium.tsv).
+Currently, the format supports the following function types:
+linear, inverse, exponential and Michaelis-Menten.
+The function types have been chosen to reflect common biochemical functions.
+Typically, enzyme efficiencies vary linearly with growth rate
+and transporters have activities that depend on the concentration of metabolites transported
+according to a Michaelis-Menten function.
+
+A parameter can also be defined as a product of functions, called an “aggregate”.
+For example, the activity of a transporter can be described
+as the product of a growth rate-dependent maximal activity and a
+concentration-dependent Michaelis-Menten term.
+All parameters are allowed to have growth-rate or concentration dependencies.
+For instance, maximal densities and target fluxes can be defined as constant or growth rate dependent.
 
 \subsection{RBAParameters}
 \label{sec:rba_parameters}
@@ -135,3 +162,53 @@ The \functionreference{} class is used to refer to a user-defined \function{}
 \paragraph{The \textit{function} attribute}
 The \textbf{function} attribute is a string that must match the identifier
 of a user-defined \function{}.
+
+\subsection{Examples}
+
+parameters.xml is one of the longest files in the model as it contains
+all numerical values in the model.
+All parameters follow the same rules, no matter whether they define a
+density constraint, a target concentration or a catalytic activity.
+
+In the first example (Fig.~\ref{fig:parameters_ex_1}),
+we show the definition of a parameter related to the density constraint,
+protein\_concentration.
+This parameter reflects measured density protein concentrations,
+later used to define a growth-dependent maximal density bound.
+The measures showed that the density of proteins decreases with growth rate:
+the density bound becomes smaller for larger growth rates.
+We also show the definition of a transporter catalytic rate.
+A transporter can be defined in two parts:
+its base efficienty (potentially growth-rate dependent, here modeled as a constant),
+and transport factors related to the concentration of the transported molecule
+and potential cofactors.
+
+In the example from the minimal model (Fig.~\ref{fig:parameters_ex_2}),
+we see how quickly parameters accumulate:
+we need parameters for catalytic activities, process machines,
+target concentrations and density constraints.
+
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.6]{figures/parameters_ex_1}
+  \caption{parameters.xml from a hand-curated model for model bacteria \textit{B. subtilis}.
+  Large parts of the file were removed for brevity.
+  Parameters are defined either as constants, functions (e.g. linear or Michealis-Menten),
+  or aggregates, representing the multiplication of functions.
+  Functions can be defined in terms of growth rate (the default) or concentration
+  of external metabolites.
+  Aggregates may contain an arbitrary number of functions,
+  and functions in an aggregate can be defined according to different variables
+  (growth rate, concentration of different metabolites).}
+  \label{fig:parameters_ex_1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.6]{figures/parameters_ex_2}
+  \caption{parameters.xml from the minimal model.
+  For simplicity, all parameters were defined as constants,
+  except for transport terms, which adopt the traditional Michaelis-Menten.}
+  \label{fig:parameters_ex_2}
+\end{figure}
