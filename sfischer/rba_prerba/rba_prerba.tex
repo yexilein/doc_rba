@@ -1,5 +1,5 @@
 % ============================================
-%  Article Class (This is a LaTeX2e document)  
+%  Article Class (This is a LaTeX2e document)
 % ============================================
 \documentclass[12pt]{scrartcl}
 
@@ -60,8 +60,8 @@
 % ==========
 \begin{document}
 
-\title{RBA pipeline}%
-\author{S. Fischer - Biosys - MAIAGE}%
+\title{RBA.prerba}%
+\author{Biosys - MAIAGE}%
 \date{\today}%
 
 \maketitle
@@ -76,34 +76,73 @@
 
 \reffigt{fig:workflow} shows the global workflow of the pipeline. It contains four parts:
 \begin{enumerate}
-\item \textbf{PreRba}: Parsing of biological data into RBA compatible XML files. Parts of the process are semi-automated, meaning the user is needed to help solve ambiguous annotations.
-\item \textbf{RbaXml}: Parsing/modifying XML files.
-\item \textbf{RbaMatrices}: XML files are transformed into matrices.
-\item \textbf{RbaSolver}: matrices are used to compute the optimal resource allocation.
+\item \textbf{RBA.prerba}: Parsing of biological data into RBA compatible XML files. Parts of the process are semi-automated, meaning the user is needed to help solve ambiguous annotations.
+\item \textbf{RBA.xml}: Parsing/modifying XML files.
+\item \textbf{RBA.core}: Transforming XML files into matrices and computing optimal resource allocation.
+\item \textbf{RBA.estim}: Estimation of catalytic constants.
 \end{enumerate}
-As a first step, this workflow should run for any prokaryote.
+This document focuses on the first part of the package, RBA.prerba.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\linewidth]{workflow}
-  \caption{Workflow of pipeline. The lower part shows how compatibility between the workflow and the former version of RBA were maintained (used for consistency checks).}
+  \caption{Workflow of pipeline.}
   \label{fig:workflow}
 \end{figure}
 
 \subsection{Philosophy of the pipeline}
 
-\paragraph{Everyting should work from first run on} We would like the pipeline to run completely on the first run. This means that a user that inputs an approximately standard SBML file should generate a full RBA model and get first growth rate results without having to do anything. Because annotations are often ambiguous, a lot of default parameters will be used for the first run, but the user will be able to parameterize their model progressively.
+\paragraph{Everything should work from first run on}
+Everything should work on the first run.
+When a user inputs an approximately standard SBML file (see requirements below),
+RBA.prerba should generate a full RBA model and RBApy should output results, including optimal growth rate and flux distributions.
+Because Uniprot annotations are often ambiguous,
+numerous default parameters will be used for the first run,
+but the user will be able to parameterize their model progressively.
 
-\paragraph{Helping user to setup main parameters through csv files} Conversion of biological data is very heavy and often ambiguous. When an annotation is ambiguous, the user will be asked for help through csv files. Everything that is input by the user is stored so the user does not have to provide the same information twice.
+\paragraph{Helping user to setup main parameters through tsv files}
+Conversion of biological data is very heavy and often ambiguous.
+When an annotation is ambiguous, the user will be asked for help through tsv (tab-separated values) files.
+Everything that is input by the user is stored so the user does not have to provide the same information twice.
 
-\paragraph{Helping user to setup fine parameters through xml files} After the main parameters have been set, the user will have ready-to-use RBA input files. We cannot handle every single parameter through csv files. Because RBA input files are written in xml, an advanced user will still be able to control more subtle parameters in a standardized (but programmatical) way.
+\paragraph{Helping user to setup fine parameters through XML files}
+After the main parameters have been set, the user will have ready-to-use RBA input files.
+We cannot handle every single parameter through tsv files.
+Because RBA input files are written in XML,
+an advanced user will still be able to control more subtle parameters in a standardized (but programmatical) way.
 
 \subsection{Typical expected usage}
 \begin{enumerate}
-\item The user provides SBML and runs the pipeline. They are happy because everything runs and he gets some output value. They are unhappy because this output value is unrealistic.
-\item The user spends time going through the helper files and understands why they are here. They provide all the information needed to create a system fully adapted to their organism. They run the whole pipeline to see how growth rate has evolved and generate new and more consistent XML input files.
-\item They spend time fine-tuning processes and enzyme catalytic efficiencies by modifying the XML files, finally reaching a biological sound model.
+\item The user provides an SBML file and runs the pipeline.
+They are happy because everything runs and they get some output value.
+They are unhappy because this output value is unrealistic.
+\item The user spends time going through the helper files and understands why they are here.
+They provide all the information needed to create a system fully adapted to their organism.
+They run the whole pipeline to see how growth rate has evolved and generate new and more consistent XML input files.
+\item They spend time fine-tuning processes and enzyme catalytic efficiencies
+by modifying the XML files, finally reaching a biological sound model.
 \end{enumerate}
+
+\subsection{IMPORTANT WARNING: Every time RBA.prerba is run, the previous XML model is overridden!}
+
+It is possible to modify the XML files manually,
+but we strongly discourage this option.
+When RBA.prerba is run, the XML model will be overwritten:
+all manual changes will be lost!
+There are two ways to work with RBA models:
+\begin{itemize}
+  \item (Not recommended) Start by working on the model by modifying tsv files only.
+  tsv files are an integral part of RBA.prerba: they will not be overwritten,
+  so feel free to regenerate the model as often as you want.
+  Once you are sure that you have modified everything you needed in tsv files,
+  generate an XML model using RBA.prerba for the last time.
+  Then you can start to modify the XML files, and \emph{never run RBA.prerba again}.
+  If you realize that you need to rerun RBA.prerba, backup all manual modifications!
+  \item (Recommended) Modify XML files using python scripts with RBA.xml (see tutorial).
+  In that way, every time you need to run RBA.prerba, you generate a new XML model,
+  then run the scripts in order to introduce further changes into the XML.
+\end{itemize}
+
 
 \clearpage
 

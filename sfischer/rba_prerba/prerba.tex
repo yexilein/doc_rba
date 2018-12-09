@@ -1,86 +1,301 @@
 
-\section{preRBA: converting biological data}
+\section{params.in: pipeline parameters}
 
-In order to get the workflow working, the user has to provide an SBML file describing the metabolism of their organism. A uniprot file is also needed, but it can be retrieved automatically. Several helper files will be generated after the first run of the pipeline. The user needs to adapt these files in order to have a biologically relevant model.
+This file contains a handful of parameters that are used to initialize the pipeline.
+We suggest using a preexisting params.in file and modifying it
+(e.g. using the sample model in the GitHub repository).
+The parameters are:
 
-This section lists the requirements for the SBML file and the formats used by the helper files.
+\begin{itemize}
+  \item INPUT\_DIR:
+  Directory where input files can be found and where helper files will be
+  stored. Can be asolute path or path relative to where program is RUN (!).
+\item SBML\_FILE:
+Name of SBML file describing metabolism of target organism.
+Should be located in INPUT\_DIR (or provide a path relative to INPUT\_DIR).
+\item ORGANISM\_ID: Taxonomy ID of target organism as established by the NCBI.
+\item OUTPUT\_DIR:
+Directory where files used to run RBA are stored. Absolute path or path
+relative to where program is RUN (!).
+\item EXTERNAL\_COMPARTMENTS (optional): list of external compartments.
+All metabolites in the SBML file that end with a suffix in this list will
+be considered external metabolites.
+\end{itemize}
 
-\subsection{SBML: extraction of metabolism and enzyme information}
+In order to get the workflow working,
+the user has to provide an SBML file describing the metabolism of their organism.
+A Uniprot file is also needed, but it can be retrieved automatically using the ORGANISM\_ID.
+Several helper files will be generated after the first run of the pipeline.
+The user needs to adapt these files in order to have a biologically relevant model.
 
-\subsubsection{Requirements}
+\section{SBML: extraction of metabolism and enzyme information}
+
+\subsection{Requirements}
 \begin{enumerate}
-\item All cytosolic metabolites should end with the suffix \texttt{\_c}.
-\item Every reaction should contain information about associated enzyme composition. There are two accepted formats:
+\item All metabolites must end with a suffix indicating their compartment.
+The suffix is separated from the rest of the name by an underscore.
+In particular, cytosolic metabolites should end with \texttt{\_c}.
+\item Every reaction should contain information about associated enzyme composition.
+There are two accepted formats:
   \begin{itemize}
-  \item Using the \texttt{<fbc:geneProductAssociation>} tag of the Flux Balance Constraints package for sbml.
-  \item Using the \texttt{<notes>} tag containing a GENE\_ASSOCIATION field. Gene names should be separated using white spaces \texttt{' '} or underscores \texttt{'\_'}. Association of genes should be described by the keywords \texttt{or} and \texttt{and}. Parentheses may or may not be used.
+  \item Using the \texttt{<fbc:geneProductAssociation>} tag of the Flux Balance Constraints package for SBML.
+  \item Using the \texttt{<notes>} tag containing a GENE\_ASSOCIATION field (COBRA style notes).
+  Gene names should be separated using white spaces \texttt{' '} or underscores \texttt{'\_'}.
+  Association of genes should be described by the keywords \texttt{or} and \texttt{and}.
   \end{itemize}
+\item All enzyme associtations must be described in an \texttt{or}s of \texttt{and}s form.
+For example, (G1 AND G2) OR (G1 AND G3) is the correct form,
+as opposed to G1 AND (G2 OR G3).
 \end{enumerate}
 
-\subsubsection{Warnings}
+\subsection{Warnings}
 \begin{itemize}
-\item The biomass reaction and reactions used to assemble non-metabolites (\textit{e.g.} proteins, rnas, etc.) are not used in the RBA model. The solver will usually assign them zero fluxes. They may safely be removed from the system.
-\item If a gene listed in the gene association cannot be retrieved in uniprot, it will be replaced by an average protein.
+\item The biomass reaction and reactions used to assemble non-metabolites
+(\textit{e.g.} proteins, RNAs, etc.) are not used in the RBA model.
+The solver will usually assign them zero fluxes.
+They may safely be removed from the system.
+\item If a gene listed in the gene association cannot be retrieved in Uniprot,
+it will be replaced by an average protein.
 \item If a gene association is left empty, the pipeline will assume the reaction is spontaneous.
+If an empty gene association represents an unknown enzyme,
+add anything in the gene association field (e.g. UNKNOWN),
+so that the unknown protein will be replaced by an average protein.
 \end{itemize}
-   
-\subsection{Uniprot: extraction of protein information}
 
-\subsubsection{Requirements}
+\subsection{tsv helpe files associated with SBML file}
 
-A uniprot file is needed to cross-reference proteins with SBML data. The user needs to provide the Uniprot id of its organism, so a uniprot file can automatically be retrieved. Alternatively, the user can provide a Uniprot file matching following requirements:
+\paragraph{unknown\_proteins.tsv}
+This file lists the genes found in gene associations that could not be
+matched with a protein in Uniprot.
+By default they are replaced by an average protein in the cytosol.
+The user is invited to map unknown genes with valid Uniprot ids.
+
+\subsection{Detection of external metabolites}
+
+In order to determine medium composition,
+RBA.prerba uses the following rules to detect external metabolites:
 \begin{itemize}
-\item Required fields are: Entry, Gene names, Protein names, Sequence, Cofactor, Subcellular location [CC], Subunit stucture [CC].
+  \item All metabolites that end with a suffix listed in EXTERNAL\_COMPARTMENTS
+  (see pipeline parameters).
+  \item All metabolites that have \texttt{boundaryCondition} set to \texttt{true}
+  are considered external.
+  \item If all metabolites from a compartment participate only in reactions where they
+  are the unique metabolic species involved
+  ($M \rightarrow $ or $\rightarrow M$), the compartment is considered external.
 \end{itemize}
 
-\subsection{Helper Files}
+\subsection{Detection of transporters}
 
-Helper files are tab-separated files generated to handle ambiguous data and parameters for the original input files.
+By default, all enzymes have a constant catalytic activity.
+In this context, constant means that the catalytic activity does not depend on growth rate.
 
-\paragraph{location.tsv} We need to match uniprot locations with SBML compartments. Uniprot location can be retrieved automatically. A helper file is generated where the user has to indicate the SBML compartment ids corresponding to the different uniprot locations.
+An enzyme is considered to be a transporter if the following rules apply:
+\begin{itemize}
+\item One of the products has the same prefix as an external metabolite
+(\textit{e.g.} \texttt{M\_nad\_e} has the same prefix as \texttt{M\_nad\_p}).
+\item One of the reactants is in the cytosol.
+\end{itemize}
+
+The catalytic activity of a transporter is modified in the following way.
+\begin{itemize}
+\item The main catalytic activity is given by the default catalytic activity applied to all enzymes.
+\item The main catalytic activity is multiplied by substrate-dependent terms ranging from 0 to 1.
+More precisely, import activity is given by a Michaelis-Menten
+function that depends on the concentration of the \emph{external} counterpart of the imported product.
+(\textit{e.g.} if the imported product is \texttt{M\_nad\_p},
+the import activity depends on \texttt{M\_nad\_e}).
+\end{itemize}
+
+Note that the latter choice may lead to non-intuitive behaviors.
+For example, take a bacterium that is able to transform trehalose into glucose in the \emph{periplasm}.
+Suppose the external concentration of trehalose is set to 0
+but the external concentration of glucose is nonzero.
+The solver might decide to import the (non-existing) trehalose into the periplasm
+(because importing into the periplasm does \emph{not} depend on medium concentrations),
+transform it into glucose that will automatically be assumed to be at medium concentration
+and then import into the cytoplasm.
+
+\section{Uniprot: extraction of protein information}
+
+\subsection{Requirements}
+
+A Uniprot file is needed to cross-reference proteins with SBML data listed in gene associations.
+The user needs to provide the Uniprot id of its organism (ORGANISM\_ID),
+so a Uniprot file can automatically be retrieved.
+Alternatively, the user can provide a Uniprot file matching following requirements:
+\begin{itemize}
+  \item The file must be located in the INPUT\_DIR, with the exact name \texttt{uniprot.csv}.
+\item Required fields are:
+Entry, Gene names, Protein names, Sequence, Cofactor, Subcellular location [CC], Subunit stucture [CC].
+\end{itemize}
+
+\subsection{tsv helper files associated with Uniprot}
+
+\paragraph{location.tsv}
+This file contains proteins with ambigous (often empty) location.
+By default, all these proteins will be located in the compartment \texttt{Cytoplasm}.
+The user is invited to update the location to one of the locations listed in location\_map.tsv.
+
+\paragraph{location\_map.tsv}
+By default, the compartments in the RBA model will be the compartments
+found in Uniprot annotations (such as Cytoplasm).
+This file lists all the unique compartments that have been extracted by RBA.prerba.
+The user is invited to rename or merge the compartments.
+For example, if two Uniprot compartments \texttt{Cell\_Membrane} and \texttt{Membrane} are mapped
+to the same identifier \texttt{membrane},
+all proteins associated with \texttt{Cell\_Membrane} and \texttt{Membrane} in Uniprot will
+be pooled into the same RBA compartment \texttt{membrane}.
+
+\paragraph{cofactors.tsv}
+This file lists all the protein-cofactor associations that were found in Uniprot.
+These associations are essential to determine the full composition of proteins and enzymes.
+We apply automated rules to infer cofactor stoichiometry (see below).
+The user is invited to check the automated extraction and replace default values.
+The user may also add a new line at the end of the file in order to create a new association.
+
+\paragraph{subunits.tsv}
+This file lists the stoichiometry of proteins within their preferred enzymatic complex.
+This information is essential to determine the exact composition of enzymes.
+We apply automated rules to infer protein stoichiometry (see below).
+The user is invited to check the automated extraction and replace default values.
 
 \subsection{Automated parsing rules}
 
-\subsubsection{Enzymatic activity}
-\paragraph{Default enzyme activity} For all enzymes, a constant catalytic activity is applied. In this context, constant means that the catalytic activity does not depend on growth rate.
+\paragraph{Protein composition in amino acids}
+Protein composition in amino acids is determined from the \texttt{Sequence} field by counting letters.
 
-\paragraph{Transporter detection} An enzyme is considered to be a transporter if the following rules apply:
-\begin{itemize}
-\item One of products has the same prefix as an external metabolite (\textit{e.g.} \texttt{M\_nad\_e} has the same prefix as \texttt{M\_nad\_p}).
-\item One of the reactants is in the cytosol.
-\end{itemize}
-The catalytic activity of a transporter is modified in the following way.
-\begin{itemize}
-\item The main catalytic activity is given by the default catalytic activity applied to all enzymes (see above).
-\item The main catalytic activity is multiplied by a substrate-dependent term ranging from 0 to 1. More precisely, import activity is given by a Michaelis-Mentent function that depends on the concentration of the \emph{external} counterpart of the imported product (\textit{e.g.} if the imported product is \texttt{M\_nad\_p}, the import activity depends on \texttt{M\_nad\_e}).
-\end{itemize}
-
-Note that the latter choice may lead to non-intuitive behaviours. For example, take a bacterium that is able to transform trehalose into glucose in the \emph{periplasm}. Suppose the external concentration of trehalose is set to 0 but the external concentration of glucose is nonzero. The solver might decide to import the (non-existing) trehalose into the periplasm (because import into the periplasm does \emph{not} depend on medium concentrations), transform it into glucose that will automatically be assumed to be at medium concentration and then imported into the cytoplasm.
-
-\subsubsection{Enzyme composition and location}
-Enzyme composition is computed from protein information retrieved in uniprot.
-
-\paragraph{Cofactor stoichiometry} From the uniprot \texttt{Cofactor} field, we use the following rules to parse protein cofactor information:
+\paragraph{Cofactor stoichiometry}
+From the uniprot \texttt{Cofactor} field,
+we use the following rules to parse protein cofactor information:
 \begin{itemize}
 \item If field is empty, we assume there is no cofactor.
-\item If there is exactly one occurrence of the keyword \texttt{Binds}, we assume stoichiometry is the number that follows \texttt{Binds}.
-\item If there is no stoichiometry information using keyword \texttt{Binds}, we assume stoichiometry is 1.
-\item If we find exactly one name and its associated CHEBI identifier, and stoichiometry could be determined as described above, annotation is considered to be not ambiguous.
-\item In any other case, annotation is considered ambiguous and written to helper file for user review. Still we use following heuristics:
-  \begin{itemize}
-  \item If there were several names and associated CHEBI identifier and stoichiometry could be determined, we assume that only the first cofactor listed is relevant. We give it full stoichiometry and 0 stoichiometry to all other cofactors.
-  \end{itemize}
+\item If there is exactly one occurrence of the keyword \texttt{Binds},
+we assume stoichiometry is the number that follows \texttt{Binds}.
+\item If there is no stoichiometry information using keyword \texttt{Binds},
+we assume stoichiometry is 1.
+\item If there were several names and associated CHEBI identifiers,
+we assume that only the first cofactor listed is relevant.
+We give it full stoichiometry and 0 stoichiometry to all other cofactors.
+\end{itemize}
+Note that the cofactors are listed in cofactors.tsv in all cases.
+
+\paragraph{Subunit structure}
+From the uniprot \texttt{Subunit stucture [CC]} field,
+we use the following rules to parse the stoichiometry of proteins within their enzymatic complex:
+\begin{itemize}
+\item If field is empty, we assume that the stoichiometry is 1.
+\item If field contains exactly one occurence of the form ``\textit{prefix}mer'', we look at the prefix.
+If prefix is mono or heterodi, we assume stoichiometry is one.
+If prefix is homodi, homotri, homotera, homopenta, homohexa, hepta, homoocta, homodeca, homododeca,
+we assume the number of subunits corresponds to the prefix.
+\item In any other case, field is considered ambiguous and a default stoichiometry of 1 is applied.
 \end{itemize}
 
-\paragraph{Subunit structure} From the uniprot \texttt{Subunit stucture [CC]} field, we use the following rules to parse the stoichiometry of proteins within their enzymatic complex:
+\paragraph{Location}
+From the uniprot \texttt{Subcellular location [CC]} field,
+we use the following rules to parse location information.
 \begin{itemize}
-\item If field is empty, we assume there is one subunit in the complex.
-\item If field contains exactly one occurence of the form ``\textit{prefix}mer'', we look at the prefix. If prefix is mono or heterodi, we assume stoichiomery is one. If prefix is homodi, homotri, homotera, homopenta, homohexa, hepta, homoocta, homodeca, homododeca, we assume the number of subunits corresponds to the prefix.
-\item In any other case, field is considered ambiguous and written to helper file for user review. 
+\item If field is non-empty, we use the field as the protein's location.
+\item If field is empty, the protein is assumed to be in the compartment Cytoplasm.
 \end{itemize}
 
-\paragraph{Location} From the uniprot \texttt{Subcellular location [CC]} field, we use the following rules to parse location information.
+\subsection{Summary of protein information used to build model}
+
+protein\_summary.tsv contains all the information that was retained during RBA.prerba's last run.
+This is an output file! Modifying it will not change RBA.prerba's outcome!
+
+\section{Generation of default processes}
+
+In order to produce a fully functional model,
+RBA.prerba automatically includes 4 important processes:
+translation, folding, transcription and RNA degradation.
+
+\subsection{FASTA files containing tRNAs and ribosome structure}
+RBA.prerba needs to know the structure of the ribosome and the sequences of the
+tRNAs in order to create the default processes.
+RBA.prerba expects to find this information in the files
+\texttt{ribosome.fasta} and \texttt{rnas.fasta} within the INPUT\_DIR.
+In the sample data, we provide two default FASTA files containing the ribosome
+and the tRNAs of the model bacterium \textit{Escherichia coli}.
+The user is invited to replace these files with ribosomal proteins, rRNAs and tRNAs from
+their organism.
+
+\subsection{tsv helper files associated with processes}
+
+\paragraph{metabolites.tsv}
+This file is used to map all the metabolites
+that are used in the default processes with species identifiers from the SBML.
+This mapping will make sure that the processes work as intended.
+For example, charged tRNAs are normally consumed during translation:
+these charged tRNAs must be produced by the metabolic network described in the SBML file.
+If charged tRNAs are not mapped to SMBL identifiers,
+the translation process will still produce proteins,
+but no charged tRNA will actually be consumed or produced by the metabolism.
+Failing to map metabolites will yield extremely unrealistic growth rates.
+The user is invited to fill in the SBML identifiers of all metabolites that
+could not be mapped automatically.
+
+The second purpose of metabolites.tsv is to specify the concentration of metabolites,
+which will be discussed in the next session.
+
+\section{Generation of default targets}
+
+Targets are used to place demands on the metabolism:
+they play an essential role in shaping the growth rate and the distribution of fluxes.
+If there are no targets to achieve, there is no need to produce enzymes or ribosomes
+and nothing happens.
+Typical targets include DNA, RNAs, the cell wall, housekeeping proteins,
+but also maintaining essential metabolites at high enough concentrations
+for the metabolism to work properly.
+Targets are usually specified as concentrations to maintain.
+When a target, e.g.\ a metabolite, is added, it must be produced de novo
+by the metabolism in order to keep the concentration constant in a growing cell.
+The solution of the RBA model will show evidence that the production pathway
+for this target is active.
+
+\subsection{tsv helper files associated with targets}
+
+\paragraph{metabolites.tsv}
+
+This file is used to map metabolites to SBML identifiers (see above),
+but also to specify target concentrations for essential metabolites.
+The user is invited to fill in concentrations wherever possible and
+add new target concentrations on new lines.
+
+\paragraph{macrocomponents.tsv}
+
+This file is used to specify all other target concentrations.
+Because this is the file's only role, it is much simpler than metabolites.tsv.
+The user is invited to add additional targets by specifying SBML identifiers
+and target concentrations on new lines.
+
+\section{In practice, what do I need to modify?}
+
+There are many helper files to modify in RBA.prerba.
+However, some files are more important than others.
+In our experience, these are the changes that have the most dramatic effect
+on the final RBA model:
 \begin{itemize}
-\item If field is non-empty, location is usually non ambiguous.
-\item If field is empty, protein is assumed to be in the cytosol.
+  \item metabolites.tsv: mapping metabolites like tRNAs to SBML identifiers is the single most
+  important change to do.
+  Otherwise no tRNAs will be consumed during translation
+  and the growth rate will be strongly overestimated.
+  \item unknown\_proteins.tsv: usually not dramatic, but it's important to
+  check what genes have not be mapped to Uniprot and how they were replaced.
+  \item location\_map.tsv: renaming/merging Uniprot compartments to match expected
+  compartments.
+  \item SBML file: in some instances, the RBA model was not solvable after
+  mapping metabolites and targets because a metabolite or target could not
+  be synthesized de novo by the metabolism.
+  In these cases, the proper pathway must be added to the SBML model.
 \end{itemize}
+
+Note that the RBA model contains one tsv files called medium.tsv
+containing the concentrations of external metabolites.
+By default, RBA.prerba creates a rich medium containing all external metabolites,
+usually yielding large growth rates.
+Creating a more realistic medium will help evaluate how good the current model is.
+Remember that RBA.prerba will override all XML files and medium.tsv every time it
+needs to be rerun.
+We advise to create a realistic medium along with a backup version, e.g. curated\_medium.tsv.
+Every time RBA.prerba is run, don't forget to replace medium.tsv with curated\_medium.tsv
