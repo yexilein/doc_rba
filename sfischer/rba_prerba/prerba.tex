@@ -211,10 +211,11 @@ RBA.prerba automatically includes 4 important processes:
 translation, folding, transcription and RNA degradation.
 
 \subsection{FASTA files containing tRNAs and ribosome structure}
-RBA.prerba needs to know the structure of the ribosome and the sequences of the
+RBA.prerba needs to know the structure of the ribosome,
+the structure of key chaperones, and the sequences of the
 tRNAs in order to create the default processes.
 RBA.prerba expects to find this information in the files
-\texttt{ribosome.fasta} and \texttt{rnas.fasta} within the INPUT\_DIR.
+\texttt{ribosome.fasta}, \texttt{chaperones.fasta} and \texttt{rnas.fasta} within the INPUT\_DIR.
 In the sample data, we provide two default FASTA files containing the ribosome
 and the tRNAs of the model bacterium \textit{Escherichia coli}.
 The user is invited to replace these files with ribosomal proteins, rRNAs and tRNAs from
