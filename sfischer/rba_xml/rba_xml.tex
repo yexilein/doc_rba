@@ -79,6 +79,37 @@
 
 \subsection{Overview of an RBA model}
 
+In Figure~\ref{fig:overview}, we summarize the systemic cell description
+underlying to the RBA method and the mathematical relationships defining
+the interactions and allocation of resources between the cellular processes.
+All these relationships take the form of linear growth-rate dependent equalities
+and inequalities: for cells growing in exponential phase at a rate $\mu$,
+(I) the metabolic network has to produce all metabolic precursors necessary for biomass production
+(equalities C1 in green);
+(II) the capacity of all molecular machines must be sufficient to ensure their function,
+i.e. to catalyze chemical conversions at a sufficient rate
+(inequalities C2 in blue for the enzymes and transporters,
+in yellow for the molecular machines of macromolecular processes);
+(III) the intracellular density of compartments and the occupancy of membranes are limited
+(inequalities C3 in red);
+(IV) mass conservation is satisfied for all molecule types (equalities C1 in green).
+Taken together, the equalities and inequalities define,
+at a given rate $\mu$,
+a feasibility linear programming (LP) problem that can be solved efficiently.
+Parsimonious resource allocation between cellular processes
+is modelled mathematically by optimizing the maximal cell growth,
+and computed by solving a series of such LP feasibility problems
+for different growth rate values.
+For a given medium, an RBA optimization problem predicts the maximal possible growth rate,
+the corresponding reaction fluxes and the abundances of molecular machines.
+Consequently, generating an RBA model requires information
+for formalizing constraints C1, C2 and C3 (Figure 1), and in particular:
+(i) the localization and the composition of the molecular machines,
+(ii) the molecules that are consumed and released by the molecular machines for functioning;
+(iii) the efficiencies of molecular machines,
+i.e. the rates of the process per amount of the catalyzing molecular machine;
+(iv) parameters such as the maximal density of each compartment.
+
 \begin{figure}
   \includegraphics[width=\linewidth]{overview}
   \caption{Overview of the files used in the XML model.
